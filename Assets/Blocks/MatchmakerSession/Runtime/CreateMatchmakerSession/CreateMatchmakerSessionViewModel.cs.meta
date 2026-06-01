@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 227128717f0e24be3b436aa7d3f7d1b7
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341932
+  packageName: Unity Building Block - Matchmaker Session
+  packageVersion: 1.0
+  assetPath: Assets/Blocks/MatchmakerSession/Runtime/CreateMatchmakerSession/CreateMatchmakerSessionViewModel.cs
+  uploadId: 813778

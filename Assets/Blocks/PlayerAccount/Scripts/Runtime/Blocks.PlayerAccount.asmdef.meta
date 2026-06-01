@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b957d935c9137fe4ba6942ffc070835c
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341928
+  packageName: Unity Building Block - Player Account
+  packageVersion: 1.0
+  assetPath: Assets/Blocks/PlayerAccount/Scripts/Runtime/Blocks.PlayerAccount.asmdef
+  uploadId: 814420

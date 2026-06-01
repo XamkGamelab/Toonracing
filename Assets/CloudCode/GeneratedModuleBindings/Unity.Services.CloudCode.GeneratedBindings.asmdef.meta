@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 579a34b2588db994195ab3018430c993
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341928
+  packageName: Unity Building Block - Player Account
+  packageVersion: 1.0
+  assetPath: Assets/CloudCode/GeneratedModuleBindings/Unity.Services.CloudCode.GeneratedBindings.asmdef
+  uploadId: 814420

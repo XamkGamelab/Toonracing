@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: d26a0fb8c0a96eb4d9822086d7bc9b1a
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341928
+  packageName: Unity Building Block - Player Account
+  packageVersion: 1.0
+  assetPath: Assets/Blocks/PlayerAccount/Scripts/Runtime/AuthenticationObserver.cs
+  uploadId: 814420

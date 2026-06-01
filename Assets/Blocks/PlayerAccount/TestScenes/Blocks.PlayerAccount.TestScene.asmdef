@@ -1,0 +1,22 @@
+{
+    "name": "Blocks.PlayerAccount.TestScene",
+    "rootNamespace": "Blocks.PlayerAccount.TestScene",
+    "references": [
+        "Unity.Services.Core",
+        "Unity.Services.CloudCode",
+        "Unity.Services.CloudSave",
+        "Unity.Services.CloudCode.GeneratedBindings",
+        "Unity.Services.Core.Components",
+        "Unity.Services.Authentication",
+        "Blocks.PlayerAccount"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

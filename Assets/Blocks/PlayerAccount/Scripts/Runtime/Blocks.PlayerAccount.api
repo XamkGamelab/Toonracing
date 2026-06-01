@@ -1,0 +1,125 @@
+// This file is generated. Do not modify by hand.
+// XML documentation file not found. To check if public methods have XML comments,
+// make sure the XML doc file is present and located next to the scraped dll
+namespace Kits.PlayerAccount
+{
+    public class AuthenticationObserver : Unity.Services.Core.ServiceObserver<Unity.Services.Authentication.IAuthenticationService>
+    {
+        public AuthenticationObserver() {}
+        public void RegisterInitializedCallback(System.Action action);
+        public void RegisterSignedInCallback(System.Action action);
+    }
+
+    public class CloudDataContainer : System.IDisposable, UnityEngine.UIElements.IDataSourceViewHashProvider, UnityEngine.UIElements.INotifyBindablePropertyChanged
+    {
+        public event System.EventHandler<UnityEngine.UIElements.BindablePropertyChangedEventArgs> propertyChanged;
+        [Unity.Properties.CreateProperty] public System.Collections.Generic.List<string> DataKeyChoices { get; set; }
+        [Unity.Properties.CreateProperty] public string DataValue { get; set; }
+        [Unity.Properties.CreateProperty] public bool HasDataKeys { get; set; }
+        [Unity.Properties.CreateProperty] public bool IsLoadingValue { get; set; }
+        [Unity.Properties.CreateProperty] public bool IsRefreshing { get; set; }
+        [Unity.Properties.CreateProperty] public string PlayerId { get; set; }
+        [Unity.Properties.CreateProperty] public string PlayerName { get; set; }
+        public CloudDataContainer() {}
+        public void Dispose();
+        public void SelectDataAccessClass(Unity.Services.CloudSave.Models.AccessClass accessClass);
+        public void SelectDataKey(string key);
+        protected bool SetField<T>(ref T field, T value, System.Action<T> onFieldChanged = default(System.Action<T>), string propertyName = default(string));
+        public System.Threading.Tasks.Task SignInAnonymously();
+        public System.Threading.Tasks.Task SignInWithPassword(string username, string password);
+        public System.Threading.Tasks.Task SignUpWithPassword(string username, string password);
+        public void StartSignInWithUnity();
+        public void UpdateCloudSaveInformation();
+        public System.Threading.Tasks.Task UpdateLocalDataValue();
+        public System.Threading.Tasks.Task UpdateRemoteDataValue(string value);
+        public System.Threading.Tasks.Task UpdateRemotePlayerName(string newName);
+    }
+
+    [UnityEngine.UIElements.UxmlElement] public class PlayerDataLabel : UnityEngine.UIElements.VisualElement
+    {
+        protected CloudDataContainer m_DataContainer;
+        protected UnityEngine.UIElements.Label m_Label;
+        [UnityEngine.UIElements.UxmlAttribute(@"data-access-class")] public Unity.Services.CloudSave.Models.AccessClass DataAccessClass { get; set; }
+        [UnityEngine.UIElements.UxmlAttribute(@"data-key")] public string DataKey { get; set; }
+        [UnityEngine.UIElements.UxmlAttribute(@"label")] public string LabelPrefix { get; set; }
+        public PlayerDataLabel() {}
+        protected virtual void OnLabelPrefixChanged();
+        public System.Threading.Tasks.Task RefreshAsync();
+        public class UxmlSerializedData : UnityEngine.UIElements.VisualElement.UxmlSerializedData
+        {
+            public UxmlSerializedData() {}
+            public override object CreateInstance();
+            public override void Deserialize(object obj);
+            [UnityEngine.UIElements.RegisterUxmlCache] public static void Register();
+        }
+    }
+
+    [UnityEngine.UIElements.UxmlElement] public class PlayerEditableDataLabel : PlayerDataLabel
+    {
+        public PlayerEditableDataLabel() {}
+        protected override void OnLabelPrefixChanged();
+        public class UxmlSerializedData : PlayerDataLabel.UxmlSerializedData
+        {
+            public UxmlSerializedData() {}
+            public override object CreateInstance();
+        }
+    }
+
+    [UnityEngine.UIElements.UxmlElement] public class PlayerIdLabel : UnityEngine.UIElements.VisualElement
+    {
+        [UnityEngine.UIElements.UxmlAttribute(@"label")] public string LabelPrefix { get; set; }
+        public PlayerIdLabel() {}
+        public class UxmlSerializedData : UnityEngine.UIElements.VisualElement.UxmlSerializedData
+        {
+            public UxmlSerializedData() {}
+            public override object CreateInstance();
+            public override void Deserialize(object obj);
+            [UnityEngine.UIElements.RegisterUxmlCache] public static void Register();
+        }
+    }
+
+    [UnityEngine.UIElements.UxmlElement] public class PlayerLoadDataControl : UnityEngine.UIElements.VisualElement
+    {
+        public PlayerLoadDataControl() {}
+        public class UxmlSerializedData : UnityEngine.UIElements.VisualElement.UxmlSerializedData
+        {
+            public UxmlSerializedData() {}
+            public override object CreateInstance();
+        }
+    }
+
+    [UnityEngine.UIElements.UxmlElement] public class PlayerNameLabel : UnityEngine.UIElements.VisualElement
+    {
+        [UnityEngine.UIElements.UxmlAttribute(@"label")] public string LabelPrefix { get; set; }
+        public PlayerNameLabel() {}
+        public class UxmlSerializedData : UnityEngine.UIElements.VisualElement.UxmlSerializedData
+        {
+            public UxmlSerializedData() {}
+            public override object CreateInstance();
+            public override void Deserialize(object obj);
+            [UnityEngine.UIElements.RegisterUxmlCache] public static void Register();
+        }
+    }
+
+    [UnityEngine.UIElements.UxmlElement] public class PlayerSignIn : UnityEngine.UIElements.VisualElement
+    {
+        public PlayerSignIn() {}
+        public class UxmlSerializedData : UnityEngine.UIElements.VisualElement.UxmlSerializedData
+        {
+            public UxmlSerializedData() {}
+            public override object CreateInstance();
+        }
+    }
+
+    [UnityEngine.UIElements.UxmlElement] public class PlayerSignUpOrSignInWithPassword : UnityEngine.UIElements.VisualElement
+    {
+        public event System.Action SignInCanceled;
+        public PlayerSignUpOrSignInWithPassword() {}
+        public PlayerSignUpOrSignInWithPassword(CloudDataContainer cloudDataContainer) {}
+        public class UxmlSerializedData : UnityEngine.UIElements.VisualElement.UxmlSerializedData
+        {
+            public UxmlSerializedData() {}
+            public override object CreateInstance();
+        }
+    }
+}

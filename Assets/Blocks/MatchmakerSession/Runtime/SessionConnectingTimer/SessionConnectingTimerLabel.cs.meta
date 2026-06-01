@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: e50ac141f5b3ec74ebf8f5c4490788c0
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341932
+  packageName: Unity Building Block - Matchmaker Session
+  packageVersion: 1.0
+  assetPath: Assets/Blocks/MatchmakerSession/Runtime/SessionConnectingTimer/SessionConnectingTimerLabel.cs
+  uploadId: 813778

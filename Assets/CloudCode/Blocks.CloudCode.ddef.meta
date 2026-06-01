@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 8b1e7002929bed84badbaec1665310d0
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: a5b15f29e7cc443c3b6d62c881c2512c, type: 3}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341928
+  packageName: Unity Building Block - Player Account
+  packageVersion: 1.0
+  assetPath: Assets/CloudCode/Blocks.CloudCode.ddef
+  uploadId: 814420

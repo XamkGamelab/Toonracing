@@ -1,0 +1,150 @@
+.blocks-modal {
+    flex-direction: row;
+    justify-content: center;
+    width:40%;
+    flex-shrink: 0;
+    overflow: scroll;
+    flex-grow: 0;
+    padding-bottom: var(--padding-md);
+}
+
+.blocks-modal-signed-in.blocks-modal {
+    width:75%;
+}
+
+/* Signed in styling */
+.blocks-player-sign-in-options TextField {
+    width: 350px;
+    margin-bottom: var(--margin-sm);
+}
+
+.blocks-player-sign-in-options Button {
+    margin-bottom: var(--margin-md);
+}
+
+Label.blocks-signin-header {
+    align-self: center;
+    margin-bottom: var(--margin-sm);
+}
+
+.blocks-line-separator {
+    height: var(--width-border-md);
+    background-color: var(--color-default);
+    margin-top: var(--margin-xl);
+    margin-bottom: var(--margin-sm);
+    width: 100%;
+}
+
+.blocks-player-sign-in-up-button-container, .blocks-footer-container {
+    flex-direction: row;
+}
+
+.blocks-player-sign-in-up-button-container Button {
+    margin: var(--margin-sm);
+}
+
+.blocks-footer-container Button {
+    margin: var(--margin-xs) ;
+    height: var(--base-unit-lg);
+    border-radius: var(--radius-md);
+}
+
+.blocks-footer-container Label {
+    align-self: center;
+}
+
+PlayerSignUpOrSignInWithPassword {
+    align-items: center;
+}
+.blocks-player-sign-in-error-msg {
+    flex-direction: row;
+    align-self: flex-start;
+    margin-left: var(--margin-md);
+}
+.blocks-player-sign-in-error-msg TextElement {
+    font-size: var(--text-md);
+    -unity-text-align: middle-center;
+    margin-left: var(--base-unit-md);
+    color: var(--color-default);
+}
+.blocks-player-sign-in-error-msg .blocks-error-icon {
+    background-image: url("../../../Textures/Error@64.png");
+    height: var(--base-unit-lg);
+    width: var(--base-unit-lg);
+}
+
+/* Account data styling */
+
+.blocks-player-account {
+    width: 95%;
+    align-self: stretch;
+}
+.blocks-player-account .unity-scroll-view__content-container {
+    align-items: stretch;
+}
+
+.blocks-player-account .unity-slider {
+    margin-left: var(--margin-lg);
+}
+
+.blocks-account-header {
+    align-self: center;
+    margin-bottom: var(--margin-md);
+}
+
+.blocks-player-label-container, .blocks-player-load-data-control > VisualElement {
+    align-items: center;
+    flex-direction: row;
+    min-height: 30px;
+    flex-grow: 1;
+}
+
+.blocks-player-load-data-control > VisualElement{
+    align-self: stretch;
+}
+
+.blocks-player-label-container {
+    border-bottom-width: var(--width-border-md);
+    border-bottom-color: var(--color-border);
+    margin-bottom: var(--margin-sm);
+    padding-bottom: var(--margin-sm) ;
+}
+
+.blocks-player-label-textfield {
+    margin-left: auto;
+    flex-grow: 0;
+    width: 41%;
+    min-height: var(--base-unit-xls);
+    padding-top: var(--padding-sm);
+    padding-bottom: var(--padding-sm);
+    height: 32px;
+}
+
+.blocks-player-label-textfield > TextInput,
+.blocks-player-label-textfield > VisualElement {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+PlayerDataLabel .blocks-player-label-textfield {
+    width: 62%;
+}
+
+.blocks-player-label-button {
+    border-radius: var(--radius-md);
+    height: var(--base-unit-xls);
+}
+
+.blocks-player-load-data-control {
+    flex-direction: column;
+}
+
+.blocks-player-load-data-control DropdownField {
+    margin: 0 5px 0 auto;
+    min-height: var(--base-unit-xls);
+}
+
+
+.hidden {
+    display: none;
+}

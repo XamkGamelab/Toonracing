@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 52ef2d8e19e540ef834f6ba90eb07aeb
+timeCreated: 1753940102
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341928
+  packageName: Unity Building Block - Player Account
+  packageVersion: 1.0
+  assetPath: Assets/Blocks/PlayerAccount/Scripts/Runtime/UI/PlayerLoadDataControl.cs
+  uploadId: 814420

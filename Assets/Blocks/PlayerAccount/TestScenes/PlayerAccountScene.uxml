@@ -1,0 +1,35 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="../Scripts/Runtime/UI/PlayerAccountStyle.uss?fileID=7433441132597879392&amp;guid=5d50a336515511548b5ab101fb2f304d&amp;type=3#PlayerAccountStyle" />
+    <Style src="./PlayerAccountScene.uss?guid=d08d285b99ad4704b4f988e0b497101b" />
+    <ui:VisualElement class="blocks-modal-container">
+        <ui:VisualElement name="player-account-modal" class="blocks-modal blocks-scene-modal blocks-scroll-view" >
+            <!-- This control is reusable in your own uxml -->
+            <Blocks.PlayerAccount.PlayerSignIn />
+            <ui:ScrollView name="player-data" class="blocks-player-account blocks-scroll-view" mode="Vertical">
+                <ui:Label class="blocks-label blocks-account-header" text="USER ACCOUNT" />
+                <!-- These player data labels are reusable and can be applied in your own UXML -->
+                <Blocks.PlayerAccount.PlayerIdLabel />
+                <Blocks.PlayerAccount.PlayerNameLabel label="Name" />
+                <Blocks.PlayerAccount.PlayerDataLabel label="Public Data" data-key="public-string" data-access-class="Public"/>
+                <Blocks.PlayerAccount.PlayerEditableDataLabel label="Default Data" data-key="default-key"/>
+                <!-- By default, there is no played data, this will populate public and default data -->
+                <ui:Button name="populate-data" class="blocks-button" text="Populate Player Data" />
+
+                <ui:Label text="DEBUG CONTROLS" class="blocks-label blocks-section-header" />
+                <!-- This control allows to load any default data. It is useful for debugging, but should
+                not be shipped as it will reveal the internal workings of your cloud-save structure -->
+                <Blocks.PlayerAccount.PlayerLoadDataControl />
+
+                <ui:Label text="SHARED DATA SAMPLE" class="blocks-label blocks-section-header" />
+                <!-- This control demonstrates how multiple players can affect the same cloud-save "game data".
+                This can be used for features like clans or a team score. This control requires
+                that you deploy the cloud-code module, as players cannot write to "game data" -->
+                <ui:VisualElement class="blocks-player-label-container" >
+                    <ui:Label class="blocks-label" text="Global Score"/>
+                    <ui:TextField name="global-score" class="blocks-textfield blocks-player-label-textfield blocks-scene-score" text="?" readonly="true"/>
+                    <ui:Button name="global-score-increment-button" class="blocks-button blocks-player-label-button" text="Increment" />
+                </ui:VisualElement>
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

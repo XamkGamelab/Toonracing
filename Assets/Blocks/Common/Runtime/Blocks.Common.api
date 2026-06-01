@@ -1,0 +1,31 @@
+// This file is generated. Do not modify by hand.
+// XML documentation file not found. To check if public methods have XML comments,
+// make sure the XML doc file is present and located next to the scraped dll
+namespace Kits.Common
+{
+    public static class KitsTheme
+    {
+        public const string Button = @"kits-button";
+        public const string ButtonRound = @"kits-button--round";
+        public const string ButtonSmall = @"kits-button--sm";
+        public const string ContainerAlignedRight = @"kits-container--right";
+        public const string ContainerHorizontal = @"kits-container--horizontal";
+        public const string ContainerSpaceBetween = @"kits-container--space-between";
+        public const string ContainerStretch = @"kits-container--stretch";
+        public const string FullWidth = @"kits-element--full-width";
+        public const string Header = @"kits-header";
+        public const string HeaderSmall = @"kits-header--sm";
+        public const string HeaderSpaceBottom = @"kits-header--space-bottom";
+        public const string HeaderXSmall = @"kits-header--xs";
+        public const string Label = @"kits-label";
+        public const string ListViewNoHover = @"kits-list-view--no-hover";
+        public const string Modal = @"kits-modal";
+        public const string ScrollView = @"kits-scroll-view";
+        public const string ScrollViewElement = @"kits-scroll-view__element";
+        public const string SpaceBottom = @"kits-element--space-bottom";
+        public const string SpaceBottomSmall = @"kits-element--space-bottom-sm";
+        public const string SpaceLeft = @"kits-element--space-left";
+        public const string SpaceRight = @"kits-element--space-right";
+        public const string TextField = @"kits-textfield";
+    }
+}

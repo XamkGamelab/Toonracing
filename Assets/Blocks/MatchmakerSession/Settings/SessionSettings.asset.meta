@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 253524165c004447a98ef10080947a6d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341932
+  packageName: Unity Building Block - Matchmaker Session
+  packageVersion: 1.0
+  assetPath: Assets/Blocks/MatchmakerSession/Settings/SessionSettings.asset
+  uploadId: 813778

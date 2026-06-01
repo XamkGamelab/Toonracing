@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: bcbf7c0f6f774111b701974d6c766465
+timeCreated: 1755796646
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341928
+  packageName: Unity Building Block - Player Account
+  packageVersion: 1.0
+  assetPath: Assets/Blocks/PlayerAccount/Scripts/Runtime/UI/PlayerEditableDataLabel.cs
+  uploadId: 814420

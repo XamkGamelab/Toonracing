@@ -1,0 +1,21 @@
+{
+    "name": "Blocks.PlayerAccount",
+    "rootNamespace": "Blocks.PlayerAccount",
+    "references": [
+        "Unity.Services.Core",
+        "Unity.Services.Core.Components",
+        "Unity.Services.Authentication",
+        "Unity.Services.CloudSave",
+        "Unity.Services.Authentication.PlayerAccounts",
+        "Blocks.Common"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 94a162fd2c8a1a21b9666532f0609275
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341928
+  packageName: Unity Building Block - Player Account
+  packageVersion: 1.0
+  assetPath: Assets/Blocks/Common/Runtime/Blocks.Common.api
+  uploadId: 814420

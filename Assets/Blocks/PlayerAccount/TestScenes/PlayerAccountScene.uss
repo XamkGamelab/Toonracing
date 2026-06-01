@@ -1,0 +1,29 @@
+﻿:root {
+    justify-content: center;
+}
+.blocks-modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 95%;
+}
+
+#populate-data {
+    width: 35%;
+    align-self: center;
+}
+
+.blocks-section-header {
+    margin-top: var(--margin-lg);
+    margin-bottom: var(--margin-md);
+    align-self: center;
+}
+
+.blocks-scene-score {
+    margin-left: auto;
+}
+
+#global-score {
+    width: 20%;
+}

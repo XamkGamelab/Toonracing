@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: ac018169e4143444b973492e9ee3721b
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341928
+  packageName: Unity Building Block - Player Account
+  packageVersion: 1.0
+  assetPath: Assets/Blocks/PlayerAccount/TestScenes/PlayerSignInController.cs
+  uploadId: 814420

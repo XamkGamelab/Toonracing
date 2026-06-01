@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 19676b0b98bacbb4291aaee62f6f2b96
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341928
+  packageName: Unity Building Block - Player Account
+  packageVersion: 1.0
+  assetPath: Assets/Blocks/PlayerAccount/TestScenes/PlayerAccountScene.unity
+  uploadId: 814420

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 878caf5b015148ba484eb2cbcbc2563b
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341932
+  packageName: Unity Building Block - Matchmaker Session
+  packageVersion: 1.0
+  assetPath: Assets/Blocks/MatchmakerSession/Runtime/Blocks.Sessions.Matchmaker.asmdef
+  uploadId: 813778
