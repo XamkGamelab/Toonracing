@@ -1,9 +1,10 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Game_logic
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : NetworkBehaviour
     {
         //In editor
         [SerializeField] private float maxSpeed;
@@ -30,6 +31,8 @@ namespace Game_logic
         // Update is called once per frame
         void FixedUpdate()
         {
+            if(!IsOwner)
+                return;
             Move();
         }
 
