@@ -11,14 +11,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dev/CarTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dev/CarTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/WheelController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/WheelController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectAuditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectAuditorSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/HierarchyWindow.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/HierarchyWindow.settings" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/PlayModeUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/PlayModeUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +26,14 @@
       <entry key="_C:/Users/tuorp/Desktop/Unity/Toonracing" value="3IpMum3zR2BmvTuBXHDDnBhWbce" />
     </persistenceIdMap>
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2194b77af8ea43e69caba13ba778a69aa65c00/20/2178249f/Editor.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -40,6 +41,19 @@
 }</component>
   <component name="ProjectId" id="3IpJ3XFxQOAA0h6SpyQ8lfXORDN" />
   <component name="ProjectSessionTemplates">
+    <option name="inlineTemplate">
+      <template>
+        <option name="modeId" value="InlineAgent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
     <option name="panelTemplate">
       <template>
         <option name="modeId" value="Agent" />
@@ -60,6 +74,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -115,13 +130,15 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="11232">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="11232" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -143,6 +160,7 @@
       <workItem from="1788455384900" duration="1311000" />
       <workItem from="1788457283266" duration="1925000" />
       <workItem from="1788508898274" duration="12731000" />
+      <workItem from="1788774102806" duration="17670000" />
     </task>
     <servers />
   </component>
