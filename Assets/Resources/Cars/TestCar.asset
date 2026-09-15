@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbcc8c6c1acd72d44b1613efbdaa21ec, type: 3}
+  m_Name: TestCar
+  m_EditorClassIdentifier: Assembly-CSharp::CarSettings
+  carName: TestCar
+  carPrefab: {fileID: 6371617652547469234, guid: 62a388ff46fe396489761410c84a4270, type: 3}
+  baseSettings: {fileID: 11400000, guid: 097e29ce622bbfb4a904ba1041742202, type: 2}
+  weightStat: 2
+  accelerationStat: 1
+  topSpeedStat: 5
+  handlingStat: 5
+  driveType: 2
