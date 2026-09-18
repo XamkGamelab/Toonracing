@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,6 +32,13 @@ namespace Car
             Reverse,
             Park
         }
+        public enum CarState
+        {
+            Driving,
+            Jumping,
+            Sliding,
+            FlippedOver
+        }
         [Header("Car default settings")]
         private DriveType driveType;
         [SerializeField] private float acceleration = 500f;
@@ -42,6 +50,11 @@ namespace Car
         [SerializeField, Range(0f, 1f)] private float brakeBalance = 0.5f; // 1 = front brakes only, -1 = rear brakes only
         [SerializeField] private float jumpForce = 5f;
         [SerializeField] private float topSpeed;
+        [SerializeField] private float maxSwayAngle = 30f;
+        [SerializeField] private float angleCorrectionForce = 10f;
+        [SerializeField] private float carFlipTime = 2f;
+        [SerializeField] private float carFlipLimitAngle = 80f;
+        [SerializeField] private float jumpTimeout = 2f;
     
         [Header("Debug")]
         [SerializeField] private float currentMotorTorque;
@@ -53,6 +66,8 @@ namespace Car
         //Turning
         [SerializeField] private float currentTurningRequest = 0f;
         [SerializeField] private float currentTurningAngle = 0f;
+        [SerializeField] private bool correctingAngle = false;
+        [SerializeField] private float angle;
         
         
         //General variables
@@ -60,18 +75,80 @@ namespace Car
         [SerializeField] private GearSelect gearSelect;
         [SerializeField] private bool handbrake;
         private float prevSteerReqAngle;
+        public CarState carState;
+        public float steerDirection = 0; // -1 = left, 1 = right, 0 = straight
+        private bool isFlippingBack = false;
+        private bool isFlipFinished = false;
+        private float groundCheckDelay;
+        private float jumpEndTimeout;
         void Start()
         {
             rb = GetComponent<Rigidbody>();
             if(rb == null)
                     Debug.LogError("Rigidbody not found on the car object.");
             Debug.Log("CarController initialized");
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-            
+            angle = rb.rotation.eulerAngles.z;
+            if(groundCheckDelay > 0f)
+                groundCheckDelay -= Time.deltaTime;
+            switch (carState)
+            {
+                case CarState.Driving:
+                    if (IsFlippedOver())
+                    {
+                        Debug.Log("Car is flipped over");
+                        carState = CarState.FlippedOver;
+                    }
+                    break;
+                case CarState.Jumping:
+                    if(Mathf.Abs(steerDirection) >= 0.5)    // If steering while in the air, apply torque to the car to rotate it
+                    {
+                        rb.AddTorque(Vector3.up * (steerDirection * 10f), ForceMode.Force);
+                        // Make sure the car is not flipping over while in the air, if it is, apply torque to correct it
+                        correctingAngle = false;
+                        if (Mathf.Abs(Vector3.Angle(transform.up, Vector3.up)) > maxSwayAngle)
+                        {
+                            // Count which direction the car is leaning and apply torque in the opposite direction to correct it
+                            Vector3 rotationAxis = Vector3.Cross(transform.up, Vector3.up);
+                            rb.AddTorque(rotationAxis * (angleCorrectionForce * Time.deltaTime), ForceMode.VelocityChange);
+                        }
+                    }
+                    if (groundCheckDelay <= 0f && isOnGround())
+                    {
+                        Debug.Log("Landed");
+                        carState = CarState.Driving;
+                    }
+
+                    if (jumpEndTimeout > 0f)
+                        jumpEndTimeout -= Time.deltaTime;
+                    else
+                        carState = CarState.Driving;
+                    break;
+                case CarState.Sliding:
+                    break;
+                case CarState.FlippedOver:
+                    // If the car has finished flipping, return to the driving state
+                    if(isFlipFinished)
+                    {
+                        carState = CarState.Driving;
+                        isFlipFinished = false;
+                        break;
+                    }
+                    // If the car is flipped over, start the flip coroutine to flip it back over
+                    if(!isFlippingBack)
+                    {
+                        isFlippingBack = true;
+                        StartCoroutine(nameof(CarFlipRoutine));
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private void FixedUpdate()
@@ -85,6 +162,40 @@ namespace Car
             wheelController(FRCollider, FRTransform);
             wheelController(RLCollider, RLTransform);
             wheelController(RRCollider, RRTransform);
+        }
+
+        private bool IsFlippedOver()
+        {
+            return Vector3.Angle(transform.up, Vector3.up) > carFlipLimitAngle;
+        }
+
+        private IEnumerator CarFlipRoutine()
+        {
+            // Stop the car from moving when flipped over
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true; // Make the car kinematic to prevent physics from interfering with the flip
+            // Get start position and rotation of the car
+            var carStartPosition = transform.position;
+            var carStartRotation = transform.rotation;
+            // Lift the car up a bit to avoid getting stuck in the ground
+            var carFlipEndPosition = transform.position + Vector3.up * 0.1f; 
+            // Keep car heading the same, but flip it over
+            var carEndRotation = Quaternion.Euler(0f, transform.eulerAngles.y, 0f);
+            var elapsedTime = 0f; // How much time has passed since the flip started
+            Debug.Log("Starting to flip the car over");
+            while (elapsedTime < carFlipTime)
+            {
+                elapsedTime += Time.deltaTime;
+                var t = elapsedTime / carFlipTime;
+                Debug.Log($"Flipping car over: {t * 100f}%");
+                transform.position = Vector3.Lerp(carStartPosition, carFlipEndPosition, t);
+                transform.rotation = Quaternion.Lerp(carStartRotation, carEndRotation, t);
+                yield return null;
+            }
+            isFlippingBack = false;
+            isFlipFinished = true;
+            rb.isKinematic = false; // Make the car non-kinematic again to allow physics to take over
         }
 
         void wheelController(WheelCollider wheelCollider, Transform transform)
@@ -275,18 +386,21 @@ namespace Car
 
         public void OnSteer(InputValue steerInput)
         {
-            currentTurningRequest = maxTurningAngle * steerInput.Get<float>();
+            steerDirection = steerInput.Get<float>();
+            currentTurningRequest = maxTurningAngle * steerDirection;
         }
 
         public void OnJump(InputValue value)
         {
             if (!value.isPressed)
                 return;
-            if (isOnGround())
-            {
-                Debug.Log("Jumping");
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            }
+            if (!isOnGround()) 
+                return;
+            Debug.Log("Jumping");
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            groundCheckDelay = 0.1f; // Delay ground check for a short time to avoid immediately detecting the ground after jumping
+            carState = CarState.Jumping;
+            jumpEndTimeout = jumpTimeout; // Allow the car to be in the jumping state for a short time even if it lands immediately
         }
 
         public void OnHandbrake(InputValue value)
@@ -296,12 +410,18 @@ namespace Car
         // Private methods
         private bool isOnGround()
         {
-            bool isGrounded;
-            isGrounded = RLCollider.isGrounded;
+            var isGrounded = RLCollider.isGrounded;
             isGrounded = isGrounded || RRCollider.isGrounded;
             isGrounded = isGrounded || FLCollider.isGrounded;
             isGrounded = isGrounded || FRCollider.isGrounded;
             return isGrounded;
+        }
+        
+        private void OnDrawGizmos()
+        {
+            // Draw a line from the car to the ground to visualize the ground check
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 1f);
         }
         #endregion
 

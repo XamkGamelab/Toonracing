@@ -286,16 +286,34 @@ MonoBehaviour:
   FLTransform: {fileID: 7514910867537601501}
   RRTransform: {fileID: 135737546192294720}
   RLTransform: {fileID: 6671160683907064788}
-  carBaseSettings: {fileID: 0}
+  acceleration: 500
+  brakingForce: 1000
+  maxTurningAngle: 35
+  steerSpeed: 5
+  steerReleaseSpeed: 5
+  coastingDrag: 1
   brakeBalance: 0
   jumpForce: 5000
+  topSpeed: 0
+  maxSwayAngle: 30
+  angleCorrectionForce: 10
+  carFlipTime: 1
+  carFlipLimitAngle: 80
+  jumpTimeout: 3
   currentMotorTorque: 0
   currentBrakingForce: 100
   acceleratePressed: 0
   brakePressed: 0
+  currentSpeed: 0
+  speedLimitReached: 0
+  currentTurningRequest: 0
   currentTurningAngle: 0
+  correctingAngle: 0
+  angle: 0
   gearSelect: 0
   handbrake: 0
+  carState: 0
+  steerDirection: 0
 --- !u!114 &5777472344127154873
 MonoBehaviour:
   m_ObjectHideFlags: 0
