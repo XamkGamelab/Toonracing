@@ -301,7 +301,7 @@ MonoBehaviour:
   carFlipLimitAngle: 80
   jumpTimeout: 3
   slideVirtualRotation: 30
-  slideTransitionTime: 5
+  slideTransitionTime: 0.5
   currentMotorTorque: 0
   currentBrakingForce: 100
   acceleratePressed: 0

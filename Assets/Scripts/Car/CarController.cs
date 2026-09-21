@@ -182,8 +182,8 @@ namespace Car
             SteerHandler();
 
             //Wheel rotation
-            WheelController(FLCollider, FLTransform);
-            WheelController(FRCollider, FRTransform);
+            WheelController(FLCollider, FLTransform, true);
+            WheelController(FRCollider, FRTransform, true);
             WheelController(RLCollider, RLTransform);
             WheelController(RRCollider, RRTransform);
         }
@@ -231,18 +231,20 @@ namespace Car
             var startJumpButtonState = isJumpPressed;
             slideServiceRunning = true;
             var elapsedTime = 0f;
+            var t = 0f;
             while (true)
             {
                 elapsedTime += Time.deltaTime;
-                var t = elapsedTime / slideTransitionTime;
                 // If the user releases the jump button, reset the requested rotation to 0 to return the car model to its original orientation
+                // Latching so it is run only once
                 if (isJumpPressed != startJumpButtonState)
                 {
-                    requestedRotation = 0f;
-                    startJumpButtonState = isJumpPressed;
                     startRotation = requestedRotation;
                     requestedRotation = 0f;
+                    startJumpButtonState = isJumpPressed;
+                    elapsedTime = elapsedTime >= slideTransitionTime ? 0f : (1f-t) * slideTransitionTime;
                 }
+                t = elapsedTime / slideTransitionTime;
                 // Rotate the car model to simulate a power slide
                 carTransform.localEulerAngles = new Vector3(0, Mathf.Lerp(startRotation, requestedRotation, t), 0);
                 // If the user releases the jump button and the car model is back to its original orientation, end the slide and 
@@ -255,16 +257,25 @@ namespace Car
             slideServiceRunning = false;
         }
         
-        private static void WheelController(WheelCollider wheelCollider, Transform wheelTransform)
+        private void WheelController(WheelCollider wheelCollider, Transform wheelTransform, bool isSteeringWheel = false)
         {
             Vector3 pos;
             Quaternion rot;
             wheelCollider.GetWorldPose(out pos, out rot);
-            var wheelPos = wheelTransform.position;
-            wheelPos.y = pos.y;
-            rot.eulerAngles = new Vector3(rot.eulerAngles.x, 0f, 0f);
-            wheelTransform.position = wheelPos;
-            wheelTransform.rotation = rot;
+            
+            // Adjust only the wheel's world Y position. Updating position directly while the
+            // model is rotated changes the child's local X/Z position as a side effect.
+            var wheelPosition = wheelTransform.position;
+            wheelTransform.localPosition += Vector3.up * (pos.y - wheelPosition.y);
+            
+            // Wheel rotation
+            var localColliderRotation = Quaternion.Inverse(wheelTransform.parent.rotation) * rot;
+            // Get wheel pitch angle
+            var wheelPitchAngle = localColliderRotation.eulerAngles.x;
+            
+            var yaw = isSteeringWheel ? wheelCollider.steerAngle : 0f;
+            
+            wheelTransform.localRotation = Quaternion.Euler(wheelPitchAngle, yaw, 0f);
         }
     
         private void SpeedHandler()
@@ -489,4 +500,3 @@ namespace Car
 
     }
 }
-
