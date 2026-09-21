@@ -9,15 +9,22 @@ namespace Car
     {
         
         // Wheel physics
+        [Header("Wheel Colliders")]
         [SerializeField] WheelCollider RLCollider;
         [SerializeField] WheelCollider RRCollider;
         [SerializeField] WheelCollider FLCollider;
         [SerializeField] WheelCollider FRCollider;
         // Wheel directions
+        [Header("Wheel Transforms")]
         [SerializeField] Transform FRTransform;
         [SerializeField] Transform FLTransform;
         [SerializeField] Transform RRTransform;
         [SerializeField] Transform RLTransform;
+        
+        // Gameobject which holds the car model, used for power slide visualization
+        [Header("Car transforms")]
+        [SerializeField] Transform carTransform;
+        
         
         public enum  DriveType
         {
@@ -55,8 +62,8 @@ namespace Car
         [SerializeField] private float carFlipTime = 2f;
         [SerializeField] private float carFlipLimitAngle = 80f;
         [SerializeField] private float jumpTimeout = 2f;
-        [SerializeField] private float slideRearWheelGrip = 0.2f;
-        [SerializeField] private float driveRearWheelGrip = 0.5f;
+        [SerializeField] private float slideVirtualRotation = 30f;
+        [SerializeField] private float slideTransitionTime = 2;
     
         [Header("Debug")]
         [SerializeField] private float currentMotorTorque;
@@ -65,8 +72,6 @@ namespace Car
         [SerializeField] private bool brakePressed;
         [SerializeField] private float currentSpeed;
         [SerializeField] private bool speedLimitReached;
-        [SerializeField, Range(0, 1f)] private float RLSlipage;
-        [SerializeField, Range(0, 1f)] private float RRSlipage;
         //Turning
         [SerializeField] private float currentTurningRequest = 0f;
         [SerializeField] private float currentTurningAngle = 0f;
@@ -81,6 +86,7 @@ namespace Car
         private float prevSteerReqAngle;
         public CarState carState;
         public float steerDirection = 0; // -1 = left, 1 = right, 0 = straight
+        public bool slideServiceRunning = false;
         private bool isFlippingBack = false;
         private bool isFlipFinished = false;
         private bool isJumpPressed = false;
@@ -91,12 +97,14 @@ namespace Car
             rb = GetComponent<Rigidbody>();
             if(rb == null)
                     Debug.LogError("Rigidbody not found on the car object.");
+            if(carTransform == null)
+                Debug.LogError("Car transform not assigned. Should be the Gameobject that holds the car model.");
             Debug.Log("CarController initialized");
             
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             angle = rb.rotation.eulerAngles.z;
             if(groundCheckDelay > 0f)
@@ -125,12 +133,8 @@ namespace Car
                     {
                         carState = CarState.Driving;
                         // Check if user is trying to start a power slide, if they are, switch to the sliding state
-                        // To initiate a power slide, the user must be steering hard (>= 0.5) and be going fast enough (>= 50% of top speed) 
-                        // and be pressing the jump button (which is used to initiate a power slide in this case)
                         if(Mathf.Abs(steerDirection) >= 0.5f && currentSpeed > topSpeed * 0.25f && isJumpPressed)
-                        {
                             carState = CarState.Sliding;
-                        }
                     }
 
                     if (jumpEndTimeout > 0f)
@@ -139,20 +143,16 @@ namespace Car
                         carState = CarState.Driving;
                     break;
                 case CarState.Sliding:
-                    // Redude rear wheel traction to allow the car to slide
-                    var slideFriction = RLCollider.sidewaysFriction;
-                    slideFriction.stiffness = slideRearWheelGrip;
-                    RLCollider.sidewaysFriction = slideFriction;
-                    RRCollider.sidewaysFriction = slideFriction;
+                    // Rotate the car model to simulate a power slide, but keep the car's physics collider aligned with the car's forward direction
+                    var rotationOffset = Mathf.Lerp(0f, 30f * steerDirection, Time.deltaTime * slideTransitionTime);
+                    carTransform.localEulerAngles = new Vector3(0, rotationOffset, 0);
                     // If user releases the jump button, end the slide and return to driving state
                     if(!isJumpPressed)
                     {
                         carState = CarState.Driving;
-                        // Reset rear wheel traction to normal
-                        slideFriction.stiffness = driveRearWheelGrip;
-                        RLCollider.sidewaysFriction = slideFriction;
-                        RRCollider.sidewaysFriction = slideFriction;
                     }
+                    if(!slideServiceRunning)
+                        StartCoroutine(nameof(SlideVisualsRoutine));
                     // If there is speed boost achieved, add a small amount of extra torque and increase the top speed for a short time to simulate a speed boost from the slide
                     break;
                 case CarState.FlippedOver:
@@ -173,11 +173,6 @@ namespace Car
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
-            RLCollider.GetGroundHit(out var wheelhit);
-            RLSlipage = wheelhit.sidewaysSlip;
-            RRCollider.GetGroundHit(out wheelhit);
-            RRSlipage = wheelhit.sidewaysSlip;
         }
 
         private void FixedUpdate()
@@ -187,10 +182,10 @@ namespace Car
             SteerHandler();
 
             //Wheel rotation
-            wheelController(FLCollider, FLTransform);
-            wheelController(FRCollider, FRTransform);
-            wheelController(RLCollider, RLTransform);
-            wheelController(RRCollider, RRTransform);
+            WheelController(FLCollider, FLTransform);
+            WheelController(FRCollider, FRTransform);
+            WheelController(RLCollider, RLTransform);
+            WheelController(RRCollider, RRTransform);
         }
 
         private bool IsFlippedOver()
@@ -227,13 +222,49 @@ namespace Car
             rb.isKinematic = false; // Make the car non-kinematic again to allow physics to take over
         }
 
-        void wheelController(WheelCollider wheelCollider, Transform transform)
+        private IEnumerator SlideVisualsRoutine()
+        {
+            // This coroutine can be used to handle the visual effects of sliding, such as changing the car's model orientation or adding particle effects.
+            // For now, it just waits for a short duration to simulate the slide effect.
+            var requestedRotation = slideVirtualRotation * steerDirection;
+            var startRotation = 0f;
+            var startJumpButtonState = isJumpPressed;
+            slideServiceRunning = true;
+            var elapsedTime = 0f;
+            while (true)
+            {
+                elapsedTime += Time.deltaTime;
+                var t = elapsedTime / slideTransitionTime;
+                // If the user releases the jump button, reset the requested rotation to 0 to return the car model to its original orientation
+                if (isJumpPressed != startJumpButtonState)
+                {
+                    requestedRotation = 0f;
+                    startJumpButtonState = isJumpPressed;
+                    startRotation = requestedRotation;
+                    requestedRotation = 0f;
+                }
+                // Rotate the car model to simulate a power slide
+                carTransform.localEulerAngles = new Vector3(0, Mathf.Lerp(startRotation, requestedRotation, t), 0);
+                // If the user releases the jump button and the car model is back to its original orientation, end the slide and 
+                // the coroutine
+                if(!isJumpPressed && Mathf.Approximately(carTransform.localEulerAngles.y, 0f))
+                    break;
+                yield return null;
+            }
+            carTransform.localEulerAngles = Vector3.zero; // Reset car model orientation after slide
+            slideServiceRunning = false;
+        }
+        
+        private static void WheelController(WheelCollider wheelCollider, Transform wheelTransform)
         {
             Vector3 pos;
             Quaternion rot;
             wheelCollider.GetWorldPose(out pos, out rot);
-            transform.position = pos;
-            transform.rotation = rot;
+            var wheelPos = wheelTransform.position;
+            wheelPos.y = pos.y;
+            rot.eulerAngles = new Vector3(rot.eulerAngles.x, 0f, 0f);
+            wheelTransform.position = wheelPos;
+            wheelTransform.rotation = rot;
         }
     
         private void SpeedHandler()
