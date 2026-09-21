@@ -293,19 +293,23 @@ MonoBehaviour:
   steerReleaseSpeed: 5
   coastingDrag: 1
   brakeBalance: 0
-  jumpForce: 5000
+  jumpForce: 2000
   topSpeed: 0
-  maxSwayAngle: 30
-  angleCorrectionForce: 10
+  maxSwayAngle: 25
+  angleCorrectionForce: 100
   carFlipTime: 1
   carFlipLimitAngle: 80
   jumpTimeout: 3
+  slideRearWheelGrip: 0.2
+  driveRearWheelGrip: 0.5
   currentMotorTorque: 0
   currentBrakingForce: 100
   acceleratePressed: 0
   brakePressed: 0
   currentSpeed: 0
   speedLimitReached: 0
+  RLSlipage: 0
+  RRSlipage: 0
   currentTurningRequest: 0
   currentTurningAngle: 0
   correctingAngle: 0

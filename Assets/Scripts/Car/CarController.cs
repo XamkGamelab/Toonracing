@@ -55,6 +55,8 @@ namespace Car
         [SerializeField] private float carFlipTime = 2f;
         [SerializeField] private float carFlipLimitAngle = 80f;
         [SerializeField] private float jumpTimeout = 2f;
+        [SerializeField] private float slideRearWheelGrip = 0.2f;
+        [SerializeField] private float driveRearWheelGrip = 0.5f;
     
         [Header("Debug")]
         [SerializeField] private float currentMotorTorque;
@@ -63,6 +65,8 @@ namespace Car
         [SerializeField] private bool brakePressed;
         [SerializeField] private float currentSpeed;
         [SerializeField] private bool speedLimitReached;
+        [SerializeField, Range(0, 1f)] private float RLSlipage;
+        [SerializeField, Range(0, 1f)] private float RRSlipage;
         //Turning
         [SerializeField] private float currentTurningRequest = 0f;
         [SerializeField] private float currentTurningAngle = 0f;
@@ -79,6 +83,7 @@ namespace Car
         public float steerDirection = 0; // -1 = left, 1 = right, 0 = straight
         private bool isFlippingBack = false;
         private bool isFlipFinished = false;
+        private bool isJumpPressed = false;
         private float groundCheckDelay;
         private float jumpEndTimeout;
         void Start()
@@ -99,11 +104,9 @@ namespace Car
             switch (carState)
             {
                 case CarState.Driving:
+                    // Check if the car is flipped over, if it is, switch to the flipped over state
                     if (IsFlippedOver())
-                    {
-                        Debug.Log("Car is flipped over");
                         carState = CarState.FlippedOver;
-                    }
                     break;
                 case CarState.Jumping:
                     if(Mathf.Abs(steerDirection) >= 0.5)    // If steering while in the air, apply torque to the car to rotate it
@@ -114,14 +117,20 @@ namespace Car
                         if (Mathf.Abs(Vector3.Angle(transform.up, Vector3.up)) > maxSwayAngle)
                         {
                             // Count which direction the car is leaning and apply torque in the opposite direction to correct it
-                            Vector3 rotationAxis = Vector3.Cross(transform.up, Vector3.up);
+                            var rotationAxis = Vector3.Cross(transform.up, Vector3.up);
                             rb.AddTorque(rotationAxis * (angleCorrectionForce * Time.deltaTime), ForceMode.VelocityChange);
                         }
                     }
                     if (groundCheckDelay <= 0f && isOnGround())
                     {
-                        Debug.Log("Landed");
                         carState = CarState.Driving;
+                        // Check if user is trying to start a power slide, if they are, switch to the sliding state
+                        // To initiate a power slide, the user must be steering hard (>= 0.5) and be going fast enough (>= 50% of top speed) 
+                        // and be pressing the jump button (which is used to initiate a power slide in this case)
+                        if(Mathf.Abs(steerDirection) >= 0.5f && currentSpeed > topSpeed * 0.25f && isJumpPressed)
+                        {
+                            carState = CarState.Sliding;
+                        }
                     }
 
                     if (jumpEndTimeout > 0f)
@@ -130,6 +139,21 @@ namespace Car
                         carState = CarState.Driving;
                     break;
                 case CarState.Sliding:
+                    // Redude rear wheel traction to allow the car to slide
+                    var slideFriction = RLCollider.sidewaysFriction;
+                    slideFriction.stiffness = slideRearWheelGrip;
+                    RLCollider.sidewaysFriction = slideFriction;
+                    RRCollider.sidewaysFriction = slideFriction;
+                    // If user releases the jump button, end the slide and return to driving state
+                    if(!isJumpPressed)
+                    {
+                        carState = CarState.Driving;
+                        // Reset rear wheel traction to normal
+                        slideFriction.stiffness = driveRearWheelGrip;
+                        RLCollider.sidewaysFriction = slideFriction;
+                        RRCollider.sidewaysFriction = slideFriction;
+                    }
+                    // If there is speed boost achieved, add a small amount of extra torque and increase the top speed for a short time to simulate a speed boost from the slide
                     break;
                 case CarState.FlippedOver:
                     // If the car has finished flipping, return to the driving state
@@ -149,6 +173,11 @@ namespace Car
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            RLCollider.GetGroundHit(out var wheelhit);
+            RLSlipage = wheelhit.sidewaysSlip;
+            RRCollider.GetGroundHit(out wheelhit);
+            RRSlipage = wheelhit.sidewaysSlip;
         }
 
         private void FixedUpdate()
@@ -392,10 +421,12 @@ namespace Car
 
         public void OnJump(InputValue value)
         {
+            isJumpPressed = false;
             if (!value.isPressed)
                 return;
             if (!isOnGround()) 
                 return;
+            isJumpPressed = true;
             Debug.Log("Jumping");
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             groundCheckDelay = 0.1f; // Delay ground check for a short time to avoid immediately detecting the ground after jumping

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CarBaseSettings
   brakeForce: 500
   maxSteeringAngle: 45
-  jumpForce: 5000
+  jumpForce: 2500
   weightMultiplier: 1.1
   accelerationMultiplier: 1.2
   steerSpeedMultiplier: 0.3

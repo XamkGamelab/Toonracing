@@ -15,17 +15,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b7a6e435-c7f1-4e3c-8a6f-9d1ac7090834" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestCar.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TestCar.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dev/CarTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dev/CarTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/CarBaseSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CarBaseSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/SpawnCar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dev/SpawnCar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/HierarchyWindow.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/HierarchyWindow.settings" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Search.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Search.settings" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,61 +47,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0293351881389717E-51" />
-      <entry key="MS500" value="2.4599733983629343E-10" />
-      <entry key="S2" value="0.021375094726268355" />
-      <entry key="S5" value="0.8998645875314835" />
-      <entry key="S10" value="3.2685359791592443" />
-      <entry key="S30" value="9.640391481995573" />
-      <entry key="S60" value="14.900344863406426" />
-      <entry key="M2" value="19.606940716571028" />
-      <entry key="M5" value="23.65581301552211" />
-      <entry key="M10" value="25.414114784281693" />
-      <entry key="M15" value="26.124587570266733" />
-      <entry key="M30" value="26.959499650063723" />
-      <entry key="H1" value="27.447008598541487" />
-      <entry key="H2" value="27.714207376633908" />
-      <entry key="H4" value="27.85462281078813" />
-      <entry key="D1" value="27.975411690003703" />
-      <entry key="W1" value="27.9964784060355" />
+      <entry key="MS100" value="4.9252605998021036E-83" />
+      <entry key="MS500" value="6.784320274884325E-17" />
+      <entry key="S2" value="3.435547617226552E-4" />
+      <entry key="S5" value="0.1371908443026476" />
+      <entry key="S10" value="1.0860249233380392" />
+      <entry key="S30" value="5.782256316347611" />
+      <entry key="S60" value="10.461051735176508" />
+      <entry key="M2" value="16.17092200529355" />
+      <entry key="M5" value="26.364654227723378" />
+      <entry key="M10" value="40.41869773670763" />
+      <entry key="M15" value="51.91840676202359" />
+      <entry key="M30" value="72.4787662283951" />
+      <entry key="H1" value="88.65135420436935" />
+      <entry key="H2" value="98.91130170514194" />
+      <entry key="H4" value="104.706219542911" />
+      <entry key="D1" value="109.91446047020924" />
+      <entry key="W1" value="110.84400078386916" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000045818994796" />
-      <entry key="S5" value="1.0088931390373188" />
-      <entry key="S10" value="1.1503719274678776" />
-      <entry key="S30" value="2.465860602453679" />
-      <entry key="S60" value="3.8780810403764754" />
-      <entry key="M2" value="5.159930540670166" />
-      <entry key="M5" value="6.8439052561143825" />
-      <entry key="M10" value="8.408129964511712" />
-      <entry key="M15" value="9.275252712714012" />
-      <entry key="M30" value="10.433927345542918" />
-      <entry key="H1" value="11.157148597728849" />
-      <entry key="H2" value="11.562335769564383" />
-      <entry key="H4" value="11.77693535759673" />
-      <entry key="D1" value="11.962219422592431" />
-      <entry key="W1" value="11.994587800371468" />
+      <entry key="MS500" value="1.0000000010206862" />
+      <entry key="S2" value="1.0087500619318805" />
+      <entry key="S5" value="1.2372227963646198" />
+      <entry key="S10" value="1.8015434277098086" />
+      <entry key="S30" value="3.1734240905914772" />
+      <entry key="S60" value="4.065782447715224" />
+      <entry key="M2" value="4.994378244823261" />
+      <entry key="M5" value="6.655264502157492" />
+      <entry key="M10" value="10.009355752798896" />
+      <entry key="M15" value="13.27301568316258" />
+      <entry key="M30" value="19.69905995428409" />
+      <entry key="H1" value="25.117824121848635" />
+      <entry key="H2" value="28.685229498713333" />
+      <entry key="H4" value="30.739327935975965" />
+      <entry key="D1" value="32.60794749223898" />
+      <entry key="W1" value="32.9436056693849" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="7.177575814299896E-7" />
-      <entry key="MS500" value="0.05904669030327813" />
-      <entry key="S2" value="0.5142142163350861" />
-      <entry key="S5" value="1.658364243279388" />
-      <entry key="S10" value="4.2615883716824765" />
-      <entry key="S30" value="11.979311266480789" />
-      <entry key="S60" value="18.676021898533584" />
-      <entry key="M2" value="24.69832151082126" />
-      <entry key="M5" value="30.465172160966805" />
-      <entry key="M10" value="33.80253410282084" />
-      <entry key="M15" value="35.38587502221974" />
-      <entry key="M30" value="37.385910391231356" />
-      <entry key="H1" value="38.6002349440456" />
-      <entry key="H2" value="39.274536362224616" />
-      <entry key="H4" value="39.63054271394318" />
-      <entry key="D1" value="39.937460136575275" />
-      <entry key="W1" value="39.991041738022304" />
+      <entry key="MS100" value="1.1404794682578568E-5" />
+      <entry key="MS500" value="0.10266383790943541" />
+      <entry key="S2" value="0.5729380543426943" />
+      <entry key="S5" value="1.1429619763195735" />
+      <entry key="S10" value="2.723369493160431" />
+      <entry key="S30" value="8.845390989324533" />
+      <entry key="S60" value="14.442758070552266" />
+      <entry key="M2" value="21.105440664375976" />
+      <entry key="M5" value="32.98516611132561" />
+      <entry key="M10" value="50.40248730710696" />
+      <entry key="M15" value="65.1694425135803" />
+      <entry key="M30" value="92.16215064236333" />
+      <entry key="H1" value="113.75941648904382" />
+      <entry key="H2" value="127.59102595415385" />
+      <entry key="H4" value="135.44261645944766" />
+      <entry key="D1" value="142.52189253992407" />
+      <entry key="W1" value="143.78753213243337" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -206,11 +200,11 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="13876">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="coreClr" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="13876" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -236,7 +230,8 @@
       <workItem from="1789711662164" duration="7158000" />
       <workItem from="1789719361343" duration="72000" />
       <workItem from="1789720238773" duration="459000" />
-      <workItem from="1789720721021" duration="2099000" />
+      <workItem from="1789720721021" duration="3580000" />
+      <workItem from="1789970258642" duration="3043000" />
     </task>
     <servers />
   </component>
