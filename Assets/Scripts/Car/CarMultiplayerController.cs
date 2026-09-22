@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Scriptables;
+using Unity.Collections;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Car
 {
-    public class CarController : MonoBehaviour
+    public class CarMultiplayerController : NetworkBehaviour
     {
         
         // Wheel physics
@@ -27,12 +30,12 @@ namespace Car
         [SerializeField] Transform carTransform;
         
         
-        public enum  DriveType
+        /*public enum  DriveType
         {
             Fwd,
             Rwd,
             Awd
-        }
+        }*/
 
         private enum GearSelect
         {
@@ -48,7 +51,7 @@ namespace Car
             FlippedOver
         }
         [Header("Car default settings")]
-        private DriveType driveType;
+        private Scriptables.CarSettings.DriveType driveType;
         [SerializeField] private float acceleration = 500f;
         [SerializeField] private float brakingForce = 1000f;
         [SerializeField] private float maxTurningAngle = 35f;
@@ -93,6 +96,9 @@ namespace Car
         private bool isJumpPressed = false;
         private float groundCheckDelay;
         private float jumpEndTimeout;
+        
+        // Multiplayer variables
+        private NetworkVariable<FixedString64Bytes> selectedCarType = new NetworkVariable<FixedString64Bytes>();
         void Start()
         {
             rb = GetComponent<Rigidbody>();
@@ -295,19 +301,19 @@ namespace Car
             
             switch (driveType)
             {
-                case DriveType.Awd:
+                case Scriptables.CarSettings.DriveType.Awd:
                     RLCollider.motorTorque = torque;
                     RRCollider.motorTorque = torque;
                     FLCollider.motorTorque = torque;
                     FRCollider.motorTorque = torque;
                     break;
-                case DriveType.Rwd:
+                case Scriptables.CarSettings.DriveType.Rwd:
                     RLCollider.motorTorque = torque;
                     RRCollider.motorTorque = torque;
                     FLCollider.motorTorque = 0;
                     FRCollider.motorTorque = 0;
                     break;
-                case DriveType.Fwd:
+                case Scriptables.CarSettings.DriveType.Fwd:
                     RLCollider.motorTorque = 0;
                     RRCollider.motorTorque = 0;
                     FLCollider.motorTorque = torque;
@@ -350,9 +356,9 @@ namespace Car
         }
         
         // Public methods
-        public void SetCarSettings(CarSettings carSettings)
+        public void SetCarSettings(Scriptables.CarSettings carSettings)
         {
-            driveType = carSettings.driveType;
+            driveType = driveType;
             acceleration = carSettings.baseSettings.baseAccelerationForce + carSettings.baseSettings.accelerationMultiplier * (carSettings.accelerationStat - 1);
             brakingForce = carSettings.baseSettings.brakeForce;
             maxTurningAngle = carSettings.baseSettings.maxSteeringAngle;
@@ -364,6 +370,27 @@ namespace Car
             steerReleaseSpeed = (maxTurningAngle * 2f) / steerReleaseTime;
             jumpForce = carSettings.baseSettings.jumpForce;
             topSpeed = carSettings.baseSettings.baseMaxSpeed + carSettings.baseSettings.accelerationMultiplier * (carSettings.topSpeedStat-1);
+        }
+        
+        // Multiplayer specific methods
+        [ServerRpc]
+        private void SetCarServerRpc(string carType)
+        {
+            selectedCarType.Value = carType;
+        }
+
+        private void OnCarDataChanged(string carType)
+        {
+            // Initialize the cars array
+            var cars = Resources.LoadAll<CarSettings>("Cars");
+            var newCarSettings = cars.FirstOrDefault(car => car.carName == carType);
+            // Get the correct scriptable object based on the car type and set the car settings
+            if(newCarSettings == null)
+            {
+                Debug.LogError($"Car with name {carType} not found in Resources/Cars");
+                return;
+            }
+            SetCarSettings(newCarSettings);
         }
         
         // Input system callbacks
