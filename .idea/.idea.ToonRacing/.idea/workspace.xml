@@ -6,19 +6,17 @@
   <component name="BackgroundAgentGlobalSettings">
     <option name="selectedModelId" value="auto" />
   </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b7a6e435-c7f1-4e3c-8a6f-9d1ac7090834" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem_Actions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dev/MultiplayerTest.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dev/MultiplayerTest.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectAuditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectAuditorSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/HierarchyWindow.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/HierarchyWindow.settings" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Search.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Search.settings" afterDir="false" />
@@ -41,7 +39,70 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2194b77af8ea43e69caba13ba778a69aa65c00/20/2178249f/Editor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Immediate Window" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.8293195458144416" />
+      <entry key="MS500" value="1.9632776253482545" />
+      <entry key="S2" value="2.0536645181269395" />
+      <entry key="S5" value="2.3271493460282393" />
+      <entry key="S10" value="2.5742257544179363" />
+      <entry key="S30" value="2.926494234066727" />
+      <entry key="S60" value="3.22060408706354" />
+      <entry key="M2" value="3.510691689038839" />
+      <entry key="M5" value="3.917354064309576" />
+      <entry key="M10" value="6.279789678675302" />
+      <entry key="M15" value="10.605142494232899" />
+      <entry key="M30" value="26.500215152870307" />
+      <entry key="H1" value="60.11884608271933" />
+      <entry key="H2" value="123.51375274153625" />
+      <entry key="H4" value="207.3940705037521" />
+      <entry key="D1" value="356.7639439957515" />
+      <entry key="W1" value="395.9338168907653" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="6.627946226210095E-20" />
+      <entry key="MS500" value="1.4597409640110254E-4" />
+      <entry key="S2" value="0.11050031292369192" />
+      <entry key="S5" value="0.46428093827048067" />
+      <entry key="S10" value="0.8706958129536325" />
+      <entry key="S30" value="1.652542852602759" />
+      <entry key="S60" value="2.296567750407054" />
+      <entry key="M2" value="2.92438426005369" />
+      <entry key="M5" value="3.5188087833422634" />
+      <entry key="M10" value="4.15237162648708" />
+      <entry key="M15" value="5.193144715571537" />
+      <entry key="M30" value="9.937898808527176" />
+      <entry key="H1" value="20.841219573697018" />
+      <entry key="H2" value="39.785377789472534" />
+      <entry key="H4" value="63.53127134593696" />
+      <entry key="D1" value="105.13243268401938" />
+      <entry key="W1" value="116.03263988971337" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9075191553177864" />
+      <entry key="MS500" value="0.9844588758785454" />
+      <entry key="S2" value="1.3762153040337937" />
+      <entry key="S5" value="2.2725890078101934" />
+      <entry key="S10" value="3.083700920886545" />
+      <entry key="S30" value="4.37651379752234" />
+      <entry key="S60" value="5.376840586919231" />
+      <entry key="M2" value="6.346229613199012" />
+      <entry key="M5" value="7.393804671506773" />
+      <entry key="M10" value="10.4077390358426" />
+      <entry key="M15" value="15.778794223678453" />
+      <entry key="M30" value="36.421354708366664" />
+      <entry key="H1" value="80.9439054173269" />
+      <entry key="H2" value="163.28474027962474" />
+      <entry key="H4" value="270.9145289029381" />
+      <entry key="D1" value="461.893607765599" />
+      <entry key="W1" value="511.9660267522022" />
+    </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -84,17 +145,25 @@
   "keyToString": {
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "Multiplayer",
+    "git-widget-placeholder": "CarMechanicAternativePowerSlide",
+    "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "consents",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -105,10 +174,8 @@
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\tuorp\Desktop\Unity\Toonracing -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\tuorp\Desktop\Unity\Toonracing" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
@@ -117,42 +184,34 @@
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\tuorp\Desktop\Unity\Toonracing -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\tuorp\Desktop\Unity\Toonracing" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
+      <option name="coreClr" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list />
-      </option>
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="150536">
       <option name="allowRunningInParallel" value="false" />
+      <option name="coreClr" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="150536" />
       <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list />
-      </option>
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Device" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
+    <configuration name="Attach to" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
       <method v="2" />
     </configuration>
   </component>
@@ -167,7 +226,12 @@
       <workItem from="1788457283266" duration="1925000" />
       <workItem from="1788508898274" duration="12731000" />
       <workItem from="1788774102806" duration="17670000" />
-      <workItem from="1789459349034" duration="740000" />
+      <workItem from="1789707875378" duration="1719000" />
+      <workItem from="1789711662164" duration="7158000" />
+      <workItem from="1789719361343" duration="72000" />
+      <workItem from="1789720238773" duration="459000" />
+      <workItem from="1789720721021" duration="3580000" />
+      <workItem from="1789970258642" duration="19180000" />
     </task>
     <servers />
   </component>
@@ -201,5 +265,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
