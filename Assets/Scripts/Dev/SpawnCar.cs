@@ -5,6 +5,7 @@ public class SpawnCar : MonoBehaviour
 {
     [SerializeField] private string carName;
     private CarSettings[] cars;
+    [SerializeField, Range(0f, 1f)] private float dropHeight;
     [SerializeField] private bool spawnOnStart = false;
     CarController carInstance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,7 +19,6 @@ public class SpawnCar : MonoBehaviour
     }
     
     // Button pressed in Unity ui to spawn the car
-    [ContextMenu("Spawn Car Into Scene")]
     public void SpawnCarToScene()
     {
         if(string.IsNullOrEmpty(carName))
@@ -48,5 +48,12 @@ public class SpawnCar : MonoBehaviour
         carInstance = null;
     }
     
+    public void DropCar()
+    {
+        if(carInstance == null)
+            return;
+        var newPosition = carInstance.transform.position + Vector3.up * dropHeight;
+        carInstance.transform.position = newPosition;
+    }
     
 }

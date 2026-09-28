@@ -1,29 +1,36 @@
 using System;
 using System.Collections;
+using Scriptables;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Car
 {
-    public class CarController : MonoBehaviour
+    public class CarController : MonoBehaviour, Interfaces.IPicker
     {
         
         // Wheel physics
         [Header("Wheel Colliders")]
-        [SerializeField] WheelCollider RLCollider;
-        [SerializeField] WheelCollider RRCollider;
-        [SerializeField] WheelCollider FLCollider;
-        [SerializeField] WheelCollider FRCollider;
+        [SerializeField]
+        private WheelCollider rlCollider;
+        [SerializeField] private WheelCollider rrCollider;
+        [SerializeField] private WheelCollider flCollider;
+        [SerializeField] private WheelCollider frCollider;
         // Wheel directions
         [Header("Wheel Transforms")]
-        [SerializeField] Transform FRTransform;
-        [SerializeField] Transform FLTransform;
-        [SerializeField] Transform RRTransform;
-        [SerializeField] Transform RLTransform;
-        
-        // Gameobject which holds the car model, used for power slide visualization
+        [SerializeField] private Transform frWheelHub;
+        [SerializeField] private Transform flWheelHub;
+        [SerializeField] private Transform rrWheelHub;
+        [SerializeField] private Transform rlWheelHub;
+
+        private Transform frWheel;
+        private Transform flWheel;
+        private Transform rrWheel;
+        private Transform rlWheel;
+        // Game object which holds the car model, used for power slide visualization
         [Header("Car transforms")]
-        [SerializeField] Transform carTransform;
+        [SerializeField]
+        private Transform carTransform;
         
         
         public enum  DriveType
@@ -49,6 +56,7 @@ namespace Car
         [Header("Car default settings")]
         private DriveType driveType;
         [SerializeField] private float acceleration = 500f;
+        [SerializeField] private float boostAccelerationDelta = 1000f;
         [SerializeField] private float brakingForce = 1000f;
         [SerializeField] private float maxTurningAngle = 35f;
         [SerializeField] private float steerSpeed = 5f;
@@ -62,21 +70,16 @@ namespace Car
         [SerializeField] private float carFlipTime = 2f;
         [SerializeField] private float carFlipLimitAngle = 80f;
         [SerializeField] private float jumpTimeout = 2f;
-        [SerializeField] private float slideVirtualRotation = 30f;
+        [SerializeField] private float slideVirtualRotation = 10f;
         [SerializeField] private float slideTransitionTime = 2;
     
         [Header("Debug")]
         [SerializeField] private float currentMotorTorque;
         [SerializeField] private float currentBrakingForce;
-        [SerializeField] private bool acceleratePressed;
-        [SerializeField] private bool brakePressed;
         [SerializeField] private float currentSpeed;
-        [SerializeField] private bool speedLimitReached;
         //Turning
-        [SerializeField] private float currentTurningRequest = 0f;
-        [SerializeField] private float currentTurningAngle = 0f;
-        [SerializeField] private bool correctingAngle = false;
-        [SerializeField] private float angle;
+        [SerializeField] private float currentTurningRequest;
+        [SerializeField] private float currentTurningAngle;
         
         
         //General variables
@@ -86,27 +89,30 @@ namespace Car
         private float prevSteerReqAngle;
         public CarState carState;
         public float steerDirection = 0; // -1 = left, 1 = right, 0 = straight
-        public bool slideServiceRunning = false;
-        private bool isFlippingBack = false;
-        private bool isFlipFinished = false;
-        private bool isJumpPressed = false;
+        public bool slideServiceRunning;
+        private bool isFlippingBack;
+        private bool isFlipFinished;
+        private bool isJumpPressed;
         private float groundCheckDelay;
         private float jumpEndTimeout;
-        void Start()
+
+        private void Start()
         {
             rb = GetComponent<Rigidbody>();
             if(rb == null)
                     Debug.LogError("Rigidbody not found on the car object.");
             if(carTransform == null)
-                Debug.LogError("Car transform not assigned. Should be the Gameobject that holds the car model.");
+                Debug.LogError("Car transform not assigned. Should be the Game object that holds the car model.");
             Debug.Log("CarController initialized");
-            
+            frWheel = frWheelHub.Find("Tire");
+            flWheel = flWheelHub.Find("Tire");
+            rrWheel = rrWheelHub.Find("Tire");
+            rlWheel = rlWheelHub.Find("Tire");
         }
 
         // Update is called once per frame
         private void Update()
         {
-            angle = rb.rotation.eulerAngles.z;
             if(groundCheckDelay > 0f)
                 groundCheckDelay -= Time.deltaTime;
             switch (carState)
@@ -121,7 +127,6 @@ namespace Car
                     {
                         rb.AddTorque(Vector3.up * (steerDirection * 10f), ForceMode.Force);
                         // Make sure the car is not flipping over while in the air, if it is, apply torque to correct it
-                        correctingAngle = false;
                         if (Mathf.Abs(Vector3.Angle(transform.up, Vector3.up)) > maxSwayAngle)
                         {
                             // Count which direction the car is leaning and apply torque in the opposite direction to correct it
@@ -182,10 +187,15 @@ namespace Car
             SteerHandler();
 
             //Wheel rotation
-            WheelController(FLCollider, FLTransform, true);
-            WheelController(FRCollider, FRTransform, true);
-            WheelController(RLCollider, RLTransform);
-            WheelController(RRCollider, RRTransform);
+            if(!frWheel || !flWheel || !rrWheel || !rlWheel)
+            {
+                Debug.Log("One or more wheel transforms are not assigned.");
+                return;
+            }
+            WheelController(flCollider, flWheel, true);
+            WheelController(frCollider, frWheel, true);
+            WheelController(rlCollider, rlWheel);
+            WheelController(rrCollider, rrWheel);
         }
 
         private bool IsFlippedOver()
@@ -259,14 +269,12 @@ namespace Car
         
         private void WheelController(WheelCollider wheelCollider, Transform wheelTransform, bool isSteeringWheel = false)
         {
-            Vector3 pos;
-            Quaternion rot;
-            wheelCollider.GetWorldPose(out pos, out rot);
+            wheelCollider.GetWorldPose(out var pos, out var rot);
             
             // Adjust only the wheel's world Y position. Updating position directly while the
             // model is rotated changes the child's local X/Z position as a side effect.
             var wheelPosition = wheelTransform.position;
-            wheelTransform.localPosition += Vector3.up * (pos.y - wheelPosition.y);
+            wheelTransform.parent.localPosition += Vector3.up * (pos.y - wheelPosition.y);
             
             // Wheel rotation
             var localColliderRotation = Quaternion.Inverse(wheelTransform.parent.rotation) * rot;
@@ -274,7 +282,6 @@ namespace Car
             var wheelPitchAngle = localColliderRotation.eulerAngles.x;
             
             var yaw = isSteeringWheel ? wheelCollider.steerAngle : 0f;
-            
             wheelTransform.localRotation = Quaternion.Euler(wheelPitchAngle, yaw, 0f);
         }
     
@@ -285,32 +292,30 @@ namespace Car
             var torque = currentMotorTorque;
             // Check speed and limit torque if necessary (e.g., for top speed)
             currentSpeed = rb.linearVelocity.magnitude;
-            speedLimitReached = false;
             if (currentSpeed >= topSpeed)
             {
                 torque = 0f; // Reduce accelerating if at or above top speed
-                speedLimitReached = true;
             }
             
             switch (driveType)
             {
                 case DriveType.Awd:
-                    RLCollider.motorTorque = torque;
-                    RRCollider.motorTorque = torque;
-                    FLCollider.motorTorque = torque;
-                    FRCollider.motorTorque = torque;
+                    rlCollider.motorTorque = torque;
+                    rrCollider.motorTorque = torque;
+                    flCollider.motorTorque = torque;
+                    frCollider.motorTorque = torque;
                     break;
                 case DriveType.Rwd:
-                    RLCollider.motorTorque = torque;
-                    RRCollider.motorTorque = torque;
-                    FLCollider.motorTorque = 0;
-                    FRCollider.motorTorque = 0;
+                    rlCollider.motorTorque = torque;
+                    rrCollider.motorTorque = torque;
+                    flCollider.motorTorque = 0;
+                    frCollider.motorTorque = 0;
                     break;
                 case DriveType.Fwd:
-                    RLCollider.motorTorque = 0;
-                    RRCollider.motorTorque = 0;
-                    FLCollider.motorTorque = torque;
-                    FRCollider.motorTorque = torque;
+                    rlCollider.motorTorque = 0;
+                    rrCollider.motorTorque = 0;
+                    flCollider.motorTorque = torque;
+                    frCollider.motorTorque = torque;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -323,14 +328,14 @@ namespace Car
             //Braking
             var frontBrakeForce = currentBrakingForce * brakeBalance;
             var rearBrakeForce = currentBrakingForce * (1f - brakeBalance);
-            FLCollider.brakeTorque = frontBrakeForce;
-            FRCollider.brakeTorque = frontBrakeForce;
-            RLCollider.brakeTorque = rearBrakeForce;
-            RRCollider.brakeTorque = rearBrakeForce;
+            flCollider.brakeTorque = frontBrakeForce;
+            frCollider.brakeTorque = frontBrakeForce;
+            rlCollider.brakeTorque = rearBrakeForce;
+            rrCollider.brakeTorque = rearBrakeForce;
             if (handbrake)
             {
-                RLCollider.brakeTorque = brakingForce;
-                RRCollider.brakeTorque = brakingForce;
+                rlCollider.brakeTorque = brakingForce;
+                rrCollider.brakeTorque = brakingForce;
             }
         }
         
@@ -338,14 +343,47 @@ namespace Car
         {
             // This method can be used to handle steering logic, such as adjusting the steering angle based on input and speed.
             //Steering
-            currentTurningAngle = FLCollider.steerAngle;
+            currentTurningAngle = flCollider.steerAngle;
             // Is the steering centering or turning in the opposite direction of the current request?
             var isFastSteer = !Mathf.Approximately(Mathf.Sign(currentTurningRequest), Mathf.Sign(currentTurningAngle)) || Mathf.Abs(currentTurningRequest) < Mathf.Abs(currentTurningAngle);
             var turningSpeed = isFastSteer ? steerReleaseSpeed : steerSpeed;
             var turningAngle = Mathf.MoveTowards(currentTurningAngle, currentTurningRequest, turningSpeed * Time.fixedDeltaTime);
-            FLCollider.steerAngle = turningAngle;
-            FRCollider.steerAngle = turningAngle;
+            flCollider.steerAngle = turningAngle;
+            frCollider.steerAngle = turningAngle;
             
+        }
+        
+        // Private methods
+        private bool isOnGround()
+        {
+            var isGrounded = rlCollider.isGrounded;
+            isGrounded = isGrounded || rrCollider.isGrounded;
+            isGrounded = isGrounded || flCollider.isGrounded;
+            isGrounded = isGrounded || frCollider.isGrounded;
+            return isGrounded;
+        }
+        
+        
+        private IEnumerator SpeedBoostRoutine(float speedBoost, float accelerationBoost, float boostDuration)
+        {
+            var originalTopSpeed = topSpeed;
+            var newTopSpeed = topSpeed * speedBoost;
+            var timeout = boostDuration;
+            var newAcceleration = acceleration * accelerationBoost;
+            const float loopTime = .2f;
+            while(true)
+            {
+                // Just in case keep setting the top speed and acceleration to the boosted values, in case player gets a new boost while already boosted
+                topSpeed = newTopSpeed;
+                currentMotorTorque = newAcceleration;
+                if(timeout > loopTime)
+                    timeout -= loopTime;
+                else
+                    break;
+                yield return new WaitForSeconds(loopTime);
+            }
+            topSpeed = originalTopSpeed;
+            currentMotorTorque = acceleration;
         }
         
         // Public methods
@@ -371,12 +409,11 @@ namespace Car
         public void OnAccelerate(InputValue value)
         {
             Debug.Log($"Accelerating: {value.isPressed}");
-            brakePressed = value.isPressed;
             currentBrakingForce = 0f; // Reset braking force when accelerating
             if(value.isPressed)
             {
                 // If the car is stopped, switch to drive gear when accelerate is pressed
-                if(RRCollider.rpm > -0.1f)
+                if(rrCollider.rpm > -0.1f)
                     gearSelect = GearSelect.Drive;
                 switch (gearSelect)
                 {
@@ -415,11 +452,10 @@ namespace Car
         public void OnBrake(InputValue value)
         {
             Debug.Log($"Braking: {value.isPressed}");
-            acceleratePressed = value.isPressed;
             if (value.isPressed)
             {
                 // If the car is stopped, switch to reverse gear when brake is pressed
-                if(RRCollider.rpm < 0.1f)
+                if(rrCollider.rpm < 0.1f)
                     gearSelect = GearSelect.Reverse;
                 switch (gearSelect)
                 {
@@ -480,23 +516,34 @@ namespace Car
         {
             handbrake = value.isPressed;
         }
-        // Private methods
-        private bool isOnGround()
+
+        public void OnUsePickedItem(InputValue value)
         {
-            var isGrounded = RLCollider.isGrounded;
-            isGrounded = isGrounded || RRCollider.isGrounded;
-            isGrounded = isGrounded || FLCollider.isGrounded;
-            isGrounded = isGrounded || FRCollider.isGrounded;
-            return isGrounded;
+            if (!value.isPressed)
+                return;
+            Debug.Log("Using picked item");
+            
         }
-        
-        private void OnDrawGizmos()
-        {
-            // Draw a line from the car to the ground to visualize the ground check
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 1f);
-        }
+
         #endregion
 
+        // Interface implementation
+        public void OnHitPickableItem(PickableItemScriptable item)
+        {
+            switch (item.itemType)
+            {
+                case PickableItemScriptable.ItemType.Health:
+                    // Handle health item
+                    break;
+                case PickableItemScriptable.ItemType.Ammo:
+                    // Handle ammo item
+                    break;
+                case PickableItemScriptable.ItemType.SpeedBoost:
+                    StartCoroutine(SpeedBoostRoutine(item.value, item.AccelerationBoost, item.BoostTime));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }
