@@ -22,7 +22,7 @@ namespace Scriptables
         [Range(1, 5)] public int accelerationStat;
         [Range(1, 5)] public int topSpeedStat;
         [Range(1, 5)] public int handlingStat;
-        public Car.CarController.DriveType driveType;
+        public DriveType driveType;
     
     }
 }
