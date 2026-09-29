@@ -15,22 +15,14 @@
   <component name="ChangeListManager">
     <list default="true" id="b7a6e435-c7f1-4e3c-8a6f-9d1ac7090834" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DefaultNetworkPrefabs.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DefaultNetworkPrefabs.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dev/CarTest Multiplayer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dev/CarTest Multiplayer.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestCar 2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestCar 2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestCar.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestCar.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Cars/TestCar.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Cars/TestCar.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dev/CarTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dev/CarTest.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/SpawnCar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dev/SpawnCar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptables/CarSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptables/CarSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/VirtualProjectsConfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VirtualProjectsConfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Search.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Search.settings" afterDir="false" />
@@ -65,61 +57,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.1517743605493809" />
-      <entry key="MS500" value="1.6858666442952988" />
-      <entry key="S2" value="1.9100388240808992" />
-      <entry key="S5" value="1.9629948581345005" />
-      <entry key="S10" value="1.981323014167354" />
-      <entry key="S30" value="1.9937351719460434" />
-      <entry key="S60" value="1.9968626645990568" />
-      <entry key="M2" value="1.9984428666314735" />
-      <entry key="M5" value="2.028779335540367" />
-      <entry key="M10" value="2.646322499936121" />
-      <entry key="M15" value="4.278661672825228" />
-      <entry key="M30" value="13.154100137824297" />
-      <entry key="H1" value="38.82058792782662" />
-      <entry key="H2" value="97.62003195925965" />
-      <entry key="H4" value="189.50105256405737" />
-      <entry key="D1" value="380.4609122482091" />
-      <entry key="W1" value="434.9933476413452" />
+      <entry key="MS100" value="1.1087647515385868E-98" />
+      <entry key="MS500" value="2.564294389697279E-20" />
+      <entry key="S2" value="1.2740863311715412E-5" />
+      <entry key="S5" value="0.01775548181765327" />
+      <entry key="S10" value="0.399915886422097" />
+      <entry key="S30" value="4.148069632424058" />
+      <entry key="S60" value="7.599065524043584" />
+      <entry key="M2" value="10.310078334429743" />
+      <entry key="M5" value="13.002175553581058" />
+      <entry key="M10" value="17.246010383790537" />
+      <entry key="M15" value="21.39722637649685" />
+      <entry key="M30" value="32.54402160752915" />
+      <entry key="H1" value="56.76904737507953" />
+      <entry key="H2" value="112.59688508809218" />
+      <entry key="H4" value="205.10444566688594" />
+      <entry key="D1" value="409.49827795562095" />
+      <entry key="W1" value="469.85042393448316" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="5.6616442040094015E-11" />
-      <entry key="MS500" value="0.009785400520210484" />
-      <entry key="S2" value="0.4786481930857164" />
-      <entry key="S5" value="1.11755123986735" />
-      <entry key="S10" value="1.4924829399545891" />
-      <entry key="S30" value="1.8133917568937543" />
-      <entry key="S60" value="1.904321187838758" />
-      <entry key="M2" value="1.951551245000417" />
-      <entry key="M5" value="1.983493860619565" />
-      <entry key="M10" value="2.1560475336810248" />
-      <entry key="M15" value="2.736589643562962" />
-      <entry key="M30" value="6.212167382889189" />
-      <entry key="H1" value="15.802617059030641" />
-      <entry key="H2" value="35.28950912719766" />
-      <entry key="H4" value="63.158522661754844" />
-      <entry key="D1" value="118.53507604206706" />
-      <entry key="W1" value="134.14099052461145" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000001887015182" />
+      <entry key="S5" value="1.002227102634225" />
+      <entry key="S10" value="1.058815457906179" />
+      <entry key="S30" value="1.5950696784551277" />
+      <entry key="S60" value="2.0855752341045832" />
+      <entry key="M2" value="2.4722570511356423" />
+      <entry key="M5" value="2.933966204265367" />
+      <entry key="M10" value="4.074015506933173" />
+      <entry key="M15" value="5.538917092367141" />
+      <entry key="M30" value="10.23772398070567" />
+      <entry key="H1" value="19.520036141458757" />
+      <entry key="H2" value="37.86522150533154" />
+      <entry key="H4" value="65.69714230318759" />
+      <entry key="D1" value="124.6349785772332" />
+      <entry key="W1" value="141.82832045969653" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.0555868752023878" />
-      <entry key="MS500" value="1.6264836313904205" />
-      <entry key="S2" value="2.198774451313937" />
-      <entry key="S5" value="2.8954413548935434" />
-      <entry key="S10" value="3.3472643299896743" />
-      <entry key="S30" value="3.7549795582516863" />
-      <entry key="S60" value="3.873678747462418" />
-      <entry key="M2" value="3.9358682481037945" />
-      <entry key="M5" value="4.006513884731548" />
-      <entry key="M10" value="4.7989641409896695" />
-      <entry key="M15" value="7.011677634078038" />
-      <entry key="M30" value="19.36016252148301" />
-      <entry key="H1" value="54.61369589527671" />
-      <entry key="H2" value="132.8982275078333" />
-      <entry key="H4" value="252.64949323349438" />
-      <entry key="D1" value="498.99295414382647" />
-      <entry key="W1" value="569.1338527256958" />
+      <entry key="MS100" value="0.00942037365383406" />
+      <entry key="MS500" value="0.39338122267678294" />
+      <entry key="S2" value="0.7919676937632805" />
+      <entry key="S5" value="0.9283528209392081" />
+      <entry key="S10" value="1.3973943146637111" />
+      <entry key="S30" value="5.694579702312217" />
+      <entry key="S60" value="9.649722507347368" />
+      <entry key="M2" value="12.760933594912967" />
+      <entry key="M5" value="15.925235791319677" />
+      <entry key="M10" value="21.31062899322954" />
+      <entry key="M15" value="26.926575648597595" />
+      <entry key="M30" value="42.7719741477654" />
+      <entry key="H1" value="76.27878996976827" />
+      <entry key="H2" value="150.45111570448285" />
+      <entry key="H4" value="270.7917464338983" />
+      <entry key="D1" value="534.1301780690407" />
+      <entry key="W1" value="611.6782471623591" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -162,33 +154,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "Multiplayer",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "consents",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;CarMechanics&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;consents&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../TooracingTest\Toonracing.exe" />
@@ -263,7 +255,8 @@
       <workItem from="1789720238773" duration="459000" />
       <workItem from="1789720721021" duration="3580000" />
       <workItem from="1789970258642" duration="19180000" />
-      <workItem from="1790056941569" duration="5726000" />
+      <workItem from="1790161225876" duration="5828000" />
+      <workItem from="1790229625699" duration="3204000" />
     </task>
     <servers />
   </component>
