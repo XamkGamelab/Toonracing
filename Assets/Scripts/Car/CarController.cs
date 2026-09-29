@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Scriptables;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,14 +32,6 @@ namespace Car
         [Header("Car transforms")]
         [SerializeField]
         private Transform carTransform;
-        
-        
-        public enum  DriveType
-        {
-            Fwd,
-            Rwd,
-            Awd
-        }
 
         private enum GearSelect
         {
@@ -54,7 +47,7 @@ namespace Car
             FlippedOver
         }
         [Header("Car default settings")]
-        private DriveType driveType;
+        private CarSettings.DriveType driveType;
         [SerializeField] private float acceleration = 500f;
         [SerializeField] private float boostAccelerationDelta = 1000f;
         [SerializeField] private float brakingForce = 1000f;
@@ -64,7 +57,7 @@ namespace Car
         [SerializeField] private float coastingDrag = 1f;
         [SerializeField, Range(0f, 1f)] private float brakeBalance = 0.5f; // 1 = front brakes only, -1 = rear brakes only
         [SerializeField] private float jumpForce = 5f;
-        [SerializeField] private float topSpeed;
+        [SerializeField] private float topSpeed = 10f;
         [SerializeField] private float maxSwayAngle = 30f;
         [SerializeField] private float angleCorrectionForce = 10f;
         [SerializeField] private float carFlipTime = 2f;
@@ -84,35 +77,53 @@ namespace Car
         
         //General variables
         private Rigidbody rb;
+        private PlayerInput playerInput;
         [SerializeField] private GearSelect gearSelect;
         [SerializeField] private bool handbrake;
         private float prevSteerReqAngle;
         public CarState carState;
-        public float steerDirection = 0; // -1 = left, 1 = right, 0 = straight
+        public float steerDirection; // -1 = left, 1 = right, 0 = straight
         public bool slideServiceRunning;
         private bool isFlippingBack;
         private bool isFlipFinished;
         private bool isJumpPressed;
         private float groundCheckDelay;
         private float jumpEndTimeout;
+        private bool isRemoteControlled; // If the car is controlled by a remote player, disable input handling and physics updates
+        private NetworkObject networkObject;
 
-        private void Start()
+        private void Awake()
         {
             rb = GetComponent<Rigidbody>();
             if(rb == null)
-                    Debug.LogError("Rigidbody not found on the car object.");
+            {
+                Debug.LogError("Rigidbody not found on the car object.");
+                return;
+            }
+            rb.isKinematic = false; // Ensure the car is not kinematic at the start
             if(carTransform == null)
                 Debug.LogError("Car transform not assigned. Should be the Game object that holds the car model.");
-            Debug.Log("CarController initialized");
+            playerInput = GetComponent<PlayerInput>();
+            if(playerInput == null)
+                Debug.LogError("PlayerInput not found on the car object.");
             frWheel = frWheelHub.Find("Tire");
             flWheel = flWheelHub.Find("Tire");
             rrWheel = rrWheelHub.Find("Tire");
             rlWheel = rlWheelHub.Find("Tire");
+            networkObject = GetComponent<NetworkObject>();
+        }
+
+        private void Start()
+        {
+            Debug.Log("CarController initialized");
         }
 
         // Update is called once per frame
         private void Update()
         {
+            // If the car is controlled by a remote player, disable input handling and physics updates
+            if(isRemoteControlled)
+                return;
             if(groundCheckDelay > 0f)
                 groundCheckDelay -= Time.deltaTime;
             switch (carState)
@@ -182,6 +193,17 @@ namespace Car
 
         private void FixedUpdate()
         {
+            Debug.Log(
+                $"{name} | owner={networkObject.IsOwner} | " +
+                $"remote={isRemoteControlled} | " +
+                $"kinematic={rb.isKinematic} | " +
+                $"torque={currentMotorTorque} | " +
+                $"speed={topSpeed} | " +
+                $"driveType={driveType}"
+            );
+            // If the car is controlled by a remote player, disable input handling and physics updates
+            if(isRemoteControlled)
+                return;
             SpeedHandler();
             BrakeHandler();
             SteerHandler();
@@ -196,6 +218,13 @@ namespace Car
             WheelController(frCollider, frWheel, true);
             WheelController(rlCollider, rlWheel);
             WheelController(rrCollider, rrWheel);
+        }
+
+        private void LateUpdate()
+        {
+            if(!isRemoteControlled)
+                return;
+            // If the car is controlled by a remote player, update wheel positions based on raycasts to the ground to simulate wheel rotation and suspension movement
         }
 
         private bool IsFlippedOver()
@@ -267,7 +296,7 @@ namespace Car
             slideServiceRunning = false;
         }
         
-        private void WheelController(WheelCollider wheelCollider, Transform wheelTransform, bool isSteeringWheel = false)
+        private static void WheelController(WheelCollider wheelCollider, Transform wheelTransform, bool isSteeringWheel = false)
         {
             wheelCollider.GetWorldPose(out var pos, out var rot);
             
@@ -299,19 +328,19 @@ namespace Car
             
             switch (driveType)
             {
-                case DriveType.Awd:
+                case CarSettings.DriveType.Awd:
                     rlCollider.motorTorque = torque;
                     rrCollider.motorTorque = torque;
                     flCollider.motorTorque = torque;
                     frCollider.motorTorque = torque;
                     break;
-                case DriveType.Rwd:
+                case CarSettings.DriveType.Rwd:
                     rlCollider.motorTorque = torque;
                     rrCollider.motorTorque = torque;
                     flCollider.motorTorque = 0;
                     frCollider.motorTorque = 0;
                     break;
-                case DriveType.Fwd:
+                case CarSettings.DriveType.Fwd:
                     rlCollider.motorTorque = 0;
                     rrCollider.motorTorque = 0;
                     flCollider.motorTorque = torque;
@@ -403,11 +432,29 @@ namespace Car
             topSpeed = carSettings.baseSettings.baseMaxSpeed + carSettings.baseSettings.accelerationMultiplier * (carSettings.topSpeedStat-1);
         }
         
+        // This method is used to set whether the car is controlled by a remote player or not.
+        // If it is, disable input handling and physics updates.
+        public void SetRemoteControlled(bool isRemote)
+        {
+            isRemoteControlled = isRemote;
+            if (playerInput != null)
+            {
+                playerInput.enabled = !isRemote;
+                if (isRemote)
+                    playerInput.DeactivateInput();
+                else
+                    playerInput.ActivateInput();
+            }
+
+            if (rb != null)
+                rb.isKinematic = isRemote;
+        }
         // Input system callbacks
 
         #region Input System Callbacks
         public void OnAccelerate(InputValue value)
         {
+            
             Debug.Log($"Accelerating: {value.isPressed}");
             currentBrakingForce = 0f; // Reset braking force when accelerating
             if(value.isPressed)
@@ -528,6 +575,7 @@ namespace Car
         #endregion
 
         // Interface implementation
+        #region IPicker implementation
         public void OnHitPickableItem(PickableItemScriptable item)
         {
             switch (item.itemType)
@@ -545,5 +593,8 @@ namespace Car
                     throw new ArgumentOutOfRangeException();
             }
         }
+        #endregion
+        
+        
     }
 }

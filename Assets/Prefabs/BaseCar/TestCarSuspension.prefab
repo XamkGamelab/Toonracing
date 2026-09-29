@@ -423,6 +423,8 @@ GameObject:
   - component: {fileID: 5777472344127154873}
   - component: {fileID: 3406102150793335593}
   - component: {fileID: 2524490611833482860}
+  - component: {fileID: 7524361734958762417}
+  - component: {fileID: 5891281385637510492}
   m_Layer: 0
   m_Name: TestCarSuspension
   m_TagString: Untagged
@@ -467,7 +469,7 @@ MonoBehaviour:
   flWheelHub: {fileID: 4738395202161143968}
   rrWheelHub: {fileID: 257060760670405142}
   rlWheelHub: {fileID: 135737546192294720}
-  carTransform: {fileID: 8137897145009334694}
+  carTransform: {fileID: 4426595573162748067}
   acceleration: 500
   boostAccelerationDelta: 1000
   brakingForce: 1000
@@ -475,18 +477,18 @@ MonoBehaviour:
   steerSpeed: 5
   steerReleaseSpeed: 5
   coastingDrag: 1
-  brakeBalance: 0
-  jumpForce: 2000
+  brakeBalance: 0.5
+  jumpForce: 5
   topSpeed: 0
-  maxSwayAngle: 25
-  angleCorrectionForce: 100
-  carFlipTime: 1
+  maxSwayAngle: 30
+  angleCorrectionForce: 10
+  carFlipTime: 2
   carFlipLimitAngle: 80
-  jumpTimeout: 3
-  slideVirtualRotation: 30
-  slideTransitionTime: 0.5
+  jumpTimeout: 2
+  slideVirtualRotation: 10
+  slideTransitionTime: 2
   currentMotorTorque: 0
-  currentBrakingForce: 100
+  currentBrakingForce: 0
   currentSpeed: 0
   currentTurningRequest: 0
   currentTurningAngle: 0
@@ -573,6 +575,67 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7524361734958762417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536593978239060947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 4225102390
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  m_InScenePlacedDisabledByDefault: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &5891281385637510492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536593978239060947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242713ff2ebb93348b823083a60224ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Car.CarMultiplayerController
+  ShowTopMostFoldoutHeaderGroup: 1
+  interpolationSpeed: 10
+  netPosition:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: {x: 0, y: 0, z: 0}
+  netRotation:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: {x: 0, y: 0, z: 0, w: 0}
+  netVelocity:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: {x: 0, y: 0, z: 0}
+  netAngularVelocity:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: {x: 0, y: 0, z: 0}
 --- !u!1 &1674247408950040367
 GameObject:
   m_ObjectHideFlags: 0
