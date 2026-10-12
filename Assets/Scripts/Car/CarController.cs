@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Scriptables;
 using Unity.Netcode;
 using UnityEngine;
@@ -7,6 +8,9 @@ using UnityEngine.InputSystem;
 
 namespace Car
 {
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(PlayerInput))]
+    [RequireComponent(typeof(BoxCollider))]
     public class CarController : MonoBehaviour, Interfaces.IPicker
     {
         
@@ -73,6 +77,7 @@ namespace Car
         //Turning
         [SerializeField] private float currentTurningRequest;
         [SerializeField] private float currentTurningAngle;
+        [SerializeField] private float currentDebugAngle;
         
         
         //General variables
@@ -90,6 +95,7 @@ namespace Car
         private float groundCheckDelay;
         private float jumpEndTimeout;
         private bool isRemoteControlled; // If the car is controlled by a remote player, disable input handling and physics updates
+        [SerializeField]private Vector3 startRotation;
         private NetworkObject networkObject;
 
         private void Awake()
@@ -106,16 +112,23 @@ namespace Car
             playerInput = GetComponent<PlayerInput>();
             if(playerInput == null)
                 Debug.LogError("PlayerInput not found on the car object.");
-            frWheel = frWheelHub.Find("Tire");
-            flWheel = flWheelHub.Find("Tire");
-            rrWheel = rrWheelHub.Find("Tire");
-            rlWheel = rlWheelHub.Find("Tire");
-            networkObject = GetComponent<NetworkObject>();
+            frWheel = FindWheel(frWheelHub, "Tire");
+            flWheel = FindWheel(flWheelHub, "Tire");
+            rrWheel = FindWheel(rrWheelHub, "Tire");
+            rlWheel = FindWheel(rlWheelHub, "Tire");
+            //networkObject = GetComponent<NetworkObject>();
+        }
+
+        private static Transform FindWheel(Transform parent, string prefix)
+        {
+            prefix = prefix.ToLower();
+            return parent.Cast<Transform>().FirstOrDefault(child => child.name.ToLower().StartsWith(prefix));
         }
 
         private void Start()
         {
             Debug.Log("CarController initialized");
+            startRotation = transform.eulerAngles;
         }
 
         // Update is called once per frame
@@ -193,14 +206,6 @@ namespace Car
 
         private void FixedUpdate()
         {
-            Debug.Log(
-                $"{name} | owner={networkObject.IsOwner} | " +
-                $"remote={isRemoteControlled} | " +
-                $"kinematic={rb.isKinematic} | " +
-                $"torque={currentMotorTorque} | " +
-                $"speed={topSpeed} | " +
-                $"driveType={driveType}"
-            );
             // If the car is controlled by a remote player, disable input handling and physics updates
             if(isRemoteControlled)
                 return;
@@ -229,7 +234,8 @@ namespace Car
 
         private bool IsFlippedOver()
         {
-            return Vector3.Angle(transform.up, Vector3.up) > carFlipLimitAngle;
+            currentDebugAngle = Vector3.Angle(transform.eulerAngles, startRotation);
+            return currentDebugAngle > carFlipLimitAngle;
         }
 
         private IEnumerator CarFlipRoutine()
@@ -240,11 +246,11 @@ namespace Car
             rb.isKinematic = true; // Make the car kinematic to prevent physics from interfering with the flip
             // Get start position and rotation of the car
             var carStartPosition = transform.position;
-            var carStartRotation = transform.rotation;
+            var carStartRotation = transform.eulerAngles;
             // Lift the car up a bit to avoid getting stuck in the ground
             var carFlipEndPosition = transform.position + Vector3.up * 0.1f; 
             // Keep car heading the same, but flip it over
-            var carEndRotation = Quaternion.Euler(0f, transform.eulerAngles.y, 0f);
+            var carEndRotation = startRotation;
             var elapsedTime = 0f; // How much time has passed since the flip started
             Debug.Log("Starting to flip the car over");
             while (elapsedTime < carFlipTime)
@@ -253,7 +259,7 @@ namespace Car
                 var t = elapsedTime / carFlipTime;
                 Debug.Log($"Flipping car over: {t * 100f}%");
                 transform.position = Vector3.Lerp(carStartPosition, carFlipEndPosition, t);
-                transform.rotation = Quaternion.Lerp(carStartRotation, carEndRotation, t);
+                transform.eulerAngles = Vector3.Lerp(carStartRotation, carEndRotation, t);
                 yield return null;
             }
             isFlippingBack = false;

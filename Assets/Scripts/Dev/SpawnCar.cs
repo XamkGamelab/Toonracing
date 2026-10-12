@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpawnCar : MonoBehaviour
 {
     [SerializeField] private string carName;
-    [SerializeField] private CarMultiplayerController carMultiplayerController;
     private CarSettings[] cars;
     [SerializeField, Range(0f, 1f)] private float dropHeight;
     [SerializeField] private bool spawnOnStart = false;
@@ -27,20 +26,12 @@ public class SpawnCar : MonoBehaviour
         Debug.Log($"Spawning car...");
         if(string.IsNullOrEmpty(carName))
         {
-            if(!carMultiplayerController)
-            {
-                Debug.LogError("Car name not set");
+            Debug.LogError("Car name not set");
                 return;
-            }
         }
         // Allow only one car to be spawned at a time
-        if(carInstance != null || carMultiplayerInstance != null)
+        if(carInstance != null)
             return;
-        if (carMultiplayerController)
-        {
-            carMultiplayerInstance = Instantiate(carMultiplayerController, transform.position, transform.rotation);
-            return;
-        }
         foreach (var car in cars)
         {
             if (car.carName != carName) 
