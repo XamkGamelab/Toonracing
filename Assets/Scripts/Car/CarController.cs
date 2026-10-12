@@ -51,7 +51,7 @@ namespace Car
             FlippedOver
         }
         [Header("Car default settings")]
-        private CarSettings.DriveType driveType;
+        [SerializeField] private CarSettings.DriveType driveType;
         [SerializeField] private float acceleration = 500f;
         [SerializeField] private float boostAccelerationDelta = 1000f;
         [SerializeField] private float brakingForce = 1000f;
@@ -95,7 +95,7 @@ namespace Car
         private float groundCheckDelay;
         private float jumpEndTimeout;
         private bool isRemoteControlled; // If the car is controlled by a remote player, disable input handling and physics updates
-        [SerializeField]private Vector3 startRotation;
+        [SerializeField]private Quaternion startRotation;
         private NetworkObject networkObject;
 
         private void Awake()
@@ -112,23 +112,23 @@ namespace Car
             playerInput = GetComponent<PlayerInput>();
             if(playerInput == null)
                 Debug.LogError("PlayerInput not found on the car object.");
-            frWheel = FindWheel(frWheelHub, "Tire");
-            flWheel = FindWheel(flWheelHub, "Tire");
-            rrWheel = FindWheel(rrWheelHub, "Tire");
-            rlWheel = FindWheel(rlWheelHub, "Tire");
-            //networkObject = GetComponent<NetworkObject>();
         }
 
         private static Transform FindWheel(Transform parent, string prefix)
         {
             prefix = prefix.ToLower();
-            return parent.Cast<Transform>().FirstOrDefault(child => child.name.ToLower().StartsWith(prefix));
+            var found = parent.Cast<Transform>().FirstOrDefault(child => child.name.ToLower().StartsWith(prefix)); 
+            return found;
         }
 
         private void Start()
         {
             Debug.Log("CarController initialized");
-            startRotation = transform.eulerAngles;
+            startRotation = transform.rotation;
+            frWheel = FindWheel(frWheelHub, "Hub");
+            flWheel = FindWheel(flWheelHub, "Hub");
+            rrWheel = FindWheel(rrWheelHub, "Hub");
+            rlWheel = FindWheel(rlWheelHub, "Hub");
         }
 
         // Update is called once per frame
@@ -219,8 +219,8 @@ namespace Car
                 Debug.Log("One or more wheel transforms are not assigned.");
                 return;
             }
-            WheelController(flCollider, flWheel, true);
-            WheelController(frCollider, frWheel, true);
+            WheelController(flCollider, flWheel);
+            WheelController(frCollider, frWheel);
             WheelController(rlCollider, rlWheel);
             WheelController(rrCollider, rrWheel);
         }
@@ -234,7 +234,7 @@ namespace Car
 
         private bool IsFlippedOver()
         {
-            currentDebugAngle = Vector3.Angle(transform.eulerAngles, startRotation);
+            currentDebugAngle = Vector3.Angle(transform.up, Vector3.up);
             return currentDebugAngle > carFlipLimitAngle;
         }
 
@@ -246,7 +246,7 @@ namespace Car
             rb.isKinematic = true; // Make the car kinematic to prevent physics from interfering with the flip
             // Get start position and rotation of the car
             var carStartPosition = transform.position;
-            var carStartRotation = transform.eulerAngles;
+            var carStartRotation = transform.rotation;
             // Lift the car up a bit to avoid getting stuck in the ground
             var carFlipEndPosition = transform.position + Vector3.up * 0.1f; 
             // Keep car heading the same, but flip it over
@@ -259,7 +259,7 @@ namespace Car
                 var t = elapsedTime / carFlipTime;
                 Debug.Log($"Flipping car over: {t * 100f}%");
                 transform.position = Vector3.Lerp(carStartPosition, carFlipEndPosition, t);
-                transform.eulerAngles = Vector3.Lerp(carStartRotation, carEndRotation, t);
+                transform.rotation = Quaternion.Lerp(carStartRotation, carEndRotation, t);
                 yield return null;
             }
             isFlippingBack = false;
@@ -302,7 +302,7 @@ namespace Car
             slideServiceRunning = false;
         }
         
-        private static void WheelController(WheelCollider wheelCollider, Transform wheelTransform, bool isSteeringWheel = false)
+        private static void WheelController(WheelCollider wheelCollider, Transform wheelTransform)
         {
             wheelCollider.GetWorldPose(out var pos, out var rot);
             
@@ -311,13 +311,10 @@ namespace Car
             var wheelPosition = wheelTransform.position;
             wheelTransform.parent.localPosition += Vector3.up * (pos.y - wheelPosition.y);
             
-            // Wheel rotation
-            var localColliderRotation = Quaternion.Inverse(wheelTransform.parent.rotation) * rot;
-            // Get wheel pitch angle
-            var wheelPitchAngle = localColliderRotation.eulerAngles.x;
-            
-            var yaw = isSteeringWheel ? wheelCollider.steerAngle : 0f;
-            wheelTransform.localRotation = Quaternion.Euler(wheelPitchAngle, yaw, 0f);
+            // Apply the full pose rotation directly. Rebuilding it from Euler angles makes
+            // negative spin values wrap to 360..180 degrees and visibly reverse the wheel.
+            wheelTransform.localRotation =
+                Quaternion.Inverse(wheelTransform.parent.rotation) * rot;
         }
     
         private void SpeedHandler()
@@ -404,13 +401,14 @@ namespace Car
             var originalTopSpeed = topSpeed;
             var newTopSpeed = topSpeed * speedBoost;
             var timeout = boostDuration;
+            var originalAcceleration = acceleration;
             var newAcceleration = acceleration * accelerationBoost;
             const float loopTime = .2f;
             while(true)
             {
                 // Just in case keep setting the top speed and acceleration to the boosted values, in case player gets a new boost while already boosted
                 topSpeed = newTopSpeed;
-                currentMotorTorque = newAcceleration;
+                acceleration = newAcceleration;
                 if(timeout > loopTime)
                     timeout -= loopTime;
                 else
@@ -418,7 +416,7 @@ namespace Car
                 yield return new WaitForSeconds(loopTime);
             }
             topSpeed = originalTopSpeed;
-            currentMotorTorque = acceleration;
+            acceleration = originalAcceleration;
         }
         
         // Public methods
