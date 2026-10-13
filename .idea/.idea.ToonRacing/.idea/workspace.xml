@@ -15,19 +15,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b7a6e435-c7f1-4e3c-8a6f-9d1ac7090834" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DefaultNetworkPrefabs.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DefaultNetworkPrefabs.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BaseCar/TestCarSuspension.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BaseCar/TestCarSuspension.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dev/CarTest Multiplayer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dev/CarTest Multiplayer.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Car/Race_car.blend" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Car/Race_car.blend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Car/Race_car.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Car/Race_car.blend1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/RallyCar_v02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/RallyCar_v02.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dev/CarTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dev/CarTest.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarMultiplayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarMultiplayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/NetworkTransformTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dev/NetworkTransformTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/SpawnCar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dev/SpawnCar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptables/CarSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptables/CarSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/HierarchyWindow.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/HierarchyWindow.settings" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/WishBoneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/WishBoneController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +40,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d5ea965f39d74501b56f4006ef80da3421b600/28/d99b9db3/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d5ea965f39d74501b56f4006ef80da3421b600/74/45e57889/Component.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Dev/HelloWorldPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Dev/HelloworldManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,59 +60,59 @@
     <decayedCancelled>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.5000879334667054E-201" />
-      <entry key="S5" value="4.682164707267633E-81" />
-      <entry key="S10" value="6.842634512574549E-41" />
-      <entry key="S30" value="4.090167697480644E-14" />
-      <entry key="S60" value="2.0224163024497802E-7" />
-      <entry key="M2" value="4.497261029233228E-4" />
-      <entry key="M5" value="0.04727222910074719" />
-      <entry key="M10" value="0.35304103635324663" />
-      <entry key="M15" value="1.3402038154738758" />
-      <entry key="M30" value="10.904437768275372" />
-      <entry key="H1" value="44.10351617355152" />
-      <entry key="H2" value="108.03018827108744" />
-      <entry key="H4" value="213.38365933631962" />
-      <entry key="D1" value="570.5503363620177" />
-      <entry key="W1" value="716.8350676801633" />
+      <entry key="S2" value="8.109255E-317" />
+      <entry key="S5" value="4.68123262166576E-127" />
+      <entry key="S10" value="1.3854784839960439E-63" />
+      <entry key="S30" value="3.885195273333813E-21" />
+      <entry key="S60" value="1.65989694644673E-10" />
+      <entry key="M2" value="3.581088370399277E-5" />
+      <entry key="M5" value="0.06057070137398076" />
+      <entry key="M10" value="0.7874431828755817" />
+      <entry key="M15" value="2.026045872056833" />
+      <entry key="M30" value="6.2779107880652685" />
+      <entry key="H1" value="13.436246716214331" />
+      <entry key="H2" value="29.86297881881815" />
+      <entry key="H4" value="87.7971842796538" />
+      <entry key="D1" value="535.8082822776578" />
+      <entry key="W1" value="814.4542107218646" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0000000948353391" />
-      <entry key="MS500" value="1.0393907309869683" />
-      <entry key="S2" value="1.4455008223706363" />
-      <entry key="S5" value="1.723668058512521" />
-      <entry key="S10" value="1.850686815762723" />
-      <entry key="S30" value="1.9475233052660403" />
-      <entry key="S60" value="1.9734093565342619" />
-      <entry key="M2" value="1.9891711384672064" />
-      <entry key="M5" value="2.267313300055494" />
-      <entry key="M10" value="3.5773799936965758" />
-      <entry key="M15" value="5.343686963029711" />
-      <entry key="M30" value="11.96488688454159" />
-      <entry key="H1" value="26.619288651671855" />
-      <entry key="H2" value="52.58621890481061" />
-      <entry key="H4" value="93.98858557438005" />
-      <entry key="D1" value="219.2543234572866" />
-      <entry key="W1" value="267.4956742512754" />
+      <entry key="MS100" value="1.000000000019741" />
+      <entry key="MS500" value="1.0072289408440458" />
+      <entry key="S2" value="1.2915873424471167" />
+      <entry key="S5" value="1.6108118684622554" />
+      <entry key="S10" value="1.7815445402932935" />
+      <entry key="S30" value="1.9211236081796972" />
+      <entry key="S60" value="1.959819067159795" />
+      <entry key="M2" value="1.9878681751107297" />
+      <entry key="M5" value="2.13839308630729" />
+      <entry key="M10" value="2.4142811617797504" />
+      <entry key="M15" value="2.775834651309431" />
+      <entry key="M30" value="4.8877708264277295" />
+      <entry key="H1" value="9.966697191290478" />
+      <entry key="H2" value="19.44593267873887" />
+      <entry key="H4" value="44.85100435584445" />
+      <entry key="D1" value="213.8620849019644" />
+      <entry key="W1" value="312.5295071701566" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.310087158180492E-5" />
-      <entry key="MS500" value="0.11706783918805949" />
-      <entry key="S2" value="0.8975849873113214" />
-      <entry key="S5" value="1.438566665291901" />
-      <entry key="S10" value="1.693621394344515" />
-      <entry key="S30" value="1.8915197270404194" />
-      <entry key="S60" value="1.9449223146343675" />
-      <entry key="M2" value="1.9752284164951424" />
-      <entry key="M5" value="2.307713160922464" />
-      <entry key="M10" value="3.924156527171628" />
-      <entry key="M15" value="6.676877212195782" />
-      <entry key="M30" value="22.85971072127506" />
-      <entry key="H1" value="70.71026271960251" />
-      <entry key="H2" value="160.6027324994734" />
-      <entry key="H4" value="307.3593651779742" />
-      <entry key="D1" value="789.799481629198" />
-      <entry key="W1" value="984.3298378354294" />
+      <entry key="MS100" value="3.649363671968252E-9" />
+      <entry key="MS500" value="0.024278869640323233" />
+      <entry key="S2" value="0.6259495299760637" />
+      <entry key="S5" value="1.2499856110388141" />
+      <entry key="S10" value="1.5797037727772092" />
+      <entry key="S30" value="1.8483802804135991" />
+      <entry key="S60" value="1.9227142842551963" />
+      <entry key="M2" value="1.9691146479806598" />
+      <entry key="M5" value="2.190915171019538" />
+      <entry key="M10" value="3.1965355019111352" />
+      <entry key="M15" value="4.79723911030496" />
+      <entry key="M30" value="11.160992696194334" />
+      <entry key="H1" value="23.398254290735167" />
+      <entry key="H2" value="49.304245827618885" />
+      <entry key="H4" value="132.64241496561618" />
+      <entry key="D1" value="749.6654193386154" />
+      <entry key="W1" value="1126.9826773976113" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -161,33 +155,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;CarMechanics&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;consents&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Standalone Player.Start Unity.executor": "Debug",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "CarMechanics",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "consents",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../TooracingTest\Toonracing.exe" />
@@ -230,11 +225,11 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="14332">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="36192">
       <option name="allowRunningInParallel" value="false" />
       <option name="coreClr" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="14332" />
+      <option name="pid" value="36192" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -266,6 +261,10 @@
       <workItem from="1790229625699" duration="3204000" />
       <workItem from="1790658912576" duration="8720000" />
       <workItem from="1790680469598" duration="15282000" />
+      <workItem from="1791185254733" duration="8209000" />
+      <workItem from="1791220470454" duration="695000" />
+      <workItem from="1791790667880" duration="2487000" />
+      <workItem from="1791799034422" duration="6369000" />
     </task>
     <servers />
   </component>

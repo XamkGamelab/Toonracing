@@ -2094,7 +2094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4750271640953903566, guid: ed5b86f1f174af54cb737448be3e998f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.337
       objectReference: {fileID: 0}
     - target: {fileID: 4750271640953903566, guid: ed5b86f1f174af54cb737448be3e998f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2129,6 +2129,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed5b86f1f174af54cb737448be3e998f, type: 3}
+--- !u!1001 &2982430716915121108
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4731098613662505111, guid: a76d51334a5e8d242b9e7b8365b6a688, type: 3}
+      propertyPath: m_Name
+      value: RallyCar_v02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396418135635132973, guid: a76d51334a5e8d242b9e7b8365b6a688, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.5010335
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396418135635132973, guid: a76d51334a5e8d242b9e7b8365b6a688, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396418135635132973, guid: a76d51334a5e8d242b9e7b8365b6a688, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.1244538
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396418135635132973, guid: a76d51334a5e8d242b9e7b8365b6a688, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396418135635132973, guid: a76d51334a5e8d242b9e7b8365b6a688, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021855694
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396418135635132973, guid: a76d51334a5e8d242b9e7b8365b6a688, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396418135635132973, guid: a76d51334a5e8d242b9e7b8365b6a688, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396418135635132973, guid: a76d51334a5e8d242b9e7b8365b6a688, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396418135635132973, guid: a76d51334a5e8d242b9e7b8365b6a688, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396418135635132973, guid: a76d51334a5e8d242b9e7b8365b6a688, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a76d51334a5e8d242b9e7b8365b6a688, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2141,3 +2198,4 @@ SceneRoots:
   - {fileID: 1155174311}
   - {fileID: 634838214}
   - {fileID: 2608167336759708732}
+  - {fileID: 2982430716915121108}
