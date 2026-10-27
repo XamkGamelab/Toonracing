@@ -16,8 +16,7 @@ namespace Car
         
         // Wheel physics
         [Header("Wheel Colliders")]
-        [SerializeField]
-        private WheelCollider rlCollider;
+        [SerializeField] private WheelCollider rlCollider;
         [SerializeField] private WheelCollider rrCollider;
         [SerializeField] private WheelCollider flCollider;
         [SerializeField] private WheelCollider frCollider;
@@ -97,6 +96,11 @@ namespace Car
         private bool isRemoteControlled; // If the car is controlled by a remote player, disable input handling and physics updates
         [SerializeField]private Quaternion startRotation;
         private NetworkObject networkObject;
+        private float frontWheelRadius;
+        private float flWheelRadius;
+        private float rearWheelRadius;
+        private float rlWheelRadius;
+        private float carSpeed;
 
         private void Awake()
         {
@@ -112,6 +116,11 @@ namespace Car
             playerInput = GetComponent<PlayerInput>();
             if(playerInput == null)
                 Debug.LogError("PlayerInput not found on the car object.");
+            if(!frCollider || !flCollider || !rrCollider || !rlCollider)
+                Debug.LogError("One or more wheel colliders are not assigned.");
+            // Get the wheel radius from the wheel colliders to use for calculating wheel rotation if remote controlled
+            frontWheelRadius = frCollider.radius;
+            rearWheelRadius = rrCollider.radius;
         }
 
         private static Transform FindWheel(Transform parent, string prefix)
@@ -207,8 +216,11 @@ namespace Car
         private void FixedUpdate()
         {
             // If the car is controlled by a remote player, disable input handling and physics updates
-            if(isRemoteControlled)
+            if (isRemoteControlled)
+            {
+                WheelsRotator();
                 return;
+            }
             SpeedHandler();
             BrakeHandler();
             SteerHandler();
@@ -316,7 +328,19 @@ namespace Car
             wheelTransform.localRotation =
                 Quaternion.Inverse(wheelTransform.parent.rotation) * rot;
         }
-    
+
+        private void WheelsRotator()
+        {
+            // Calculate the new rotation based on the wheel's RPM and the time since the last frame
+            var newFrontRotation = (carSpeed / frontWheelRadius) * Time.deltaTime * Mathf.Rad2Deg;
+            var newRearRotation = (carSpeed / rearWheelRadius) * Time.deltaTime * Mathf.Rad2Deg;
+            // Apply the new rotation to the wheel transforms with small offset
+            frWheel.Rotate(Vector3.right, newFrontRotation * 1.1f, Space.Self);
+            flWheel.Rotate(Vector3.right, newFrontRotation * 1.1f, Space.Self);
+            rrWheel.Rotate(Vector3.right, newRearRotation * 1.2f, Space.Self);
+            rlWheel.Rotate(Vector3.right, newRearRotation * 1.3f, Space.Self);
+        }
+        
         private void SpeedHandler()
         {
             // This method can be used to handle speed-related logic, such as limiting top speed or applying drag.
@@ -420,6 +444,7 @@ namespace Car
         }
         
         // Public methods
+        #region Public Methods
         public void SetCarSettings(CarSettings carSettings)
         {
             driveType = carSettings.driveType;
@@ -453,6 +478,43 @@ namespace Car
             if (rb != null)
                 rb.isKinematic = isRemote;
         }
+        
+        // This method is used to get the current Y positions of the wheels, which can be used for network synchronization.
+        public Vector4 GetWheelYPositions()
+        {
+            return new Vector4(flWheel.position.y, frWheel.position.y, rlWheel.position.y, rrWheel.position.y);
+        }
+
+        // This method is used to set the Y positions of the wheels, which can be used for network synchronization.
+        public void SetWheelYPositions(Vector4 wheelYPositions)
+        {
+            flWheel.position = new Vector3(flWheel.position.x, wheelYPositions.x, flWheel.position.z);
+            frWheel.position = new Vector3(frWheel.position.x, wheelYPositions.y, frWheel.position.z);
+            rlWheel.position = new Vector3(rlWheel.position.x, wheelYPositions.z, rlWheel.position.z);
+            rrWheel.position = new Vector3(rrWheel.position.x, wheelYPositions.w, rrWheel.position.z);
+        }
+        
+        public float GetWheelSteeringAngle()
+        {
+            return flCollider.steerAngle; // Assuming both front wheels have the same steering angle
+        }
+        
+        public void SetWheelSteeringAngle(float angle)
+        {
+            var frWheelRotation = frWheel.localEulerAngles;
+            var flWheelRotation = flWheel.localEulerAngles;
+            frWheelRotation.y = angle;
+            flWheelRotation.y = angle;
+            flWheel.localEulerAngles = flWheelRotation;
+            frWheel.localEulerAngles = frWheelRotation;
+        }
+
+        public void setCarSpeed(float speed)
+        {
+            carSpeed = speed;
+        }
+        #endregion
+
         // Input system callbacks
 
         #region Input System Callbacks

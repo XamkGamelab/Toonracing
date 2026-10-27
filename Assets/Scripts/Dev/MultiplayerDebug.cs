@@ -11,7 +11,19 @@ namespace Dev
         {
             m_NetworkManager = GetComponent<NetworkManager>();
         }
-
+    
+        private void Start()
+        {
+            #if UNITY_SERVER
+                if(m_networkManager == null)
+                {
+                    Debug.LogError("NetworkManager not found on the GameObject.");
+                    return;
+                }
+                m_NetworkManager.StartServer();
+            #endif
+        }
+        #if !UNITY_SERVER
         private void OnGUI()
         {
             GUILayout.BeginArea(new Rect(10, 10, 300, 300));
@@ -43,5 +55,6 @@ namespace Dev
                             m_NetworkManager.NetworkConfig.NetworkTransport.GetType().Name);
             GUILayout.Label("Mode: " + mode);
         }
+        #endif
     }
 }

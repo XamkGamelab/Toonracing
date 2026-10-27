@@ -3,7 +3,7 @@ using System.Linq;
 using Car;
 using Unity.Netcode;
 using UnityEngine;
-
+#if !UNITY_SERVER
 public class GameManager : NetworkBehaviour
 {
     private NetworkManager m_NetworkManager;
@@ -40,25 +40,6 @@ public class GameManager : NetworkBehaviour
             m_NetworkManager.OnClientConnectedCallback += OnClientConnected;
         }
     }
-
-    private IEnumerator UpdatePositions()
-    {
-        while (true)
-        {
-            if (m_NetworkManager.IsServer && !m_NetworkManager.IsClient)
-            {
-               // foreach (ulong uid in m_NetworkManager.ConnectedClientsIds)
-                //    m_NetworkManager.SpawnManager.GetPlayerNetworkObject(uid).GetComponent<CarMultiplayerController>().Move();
-            }
-            else
-            {
-                var playerObject = m_NetworkManager.SpawnManager.GetLocalPlayerObject();
-                //var player = playerObject.GetComponent<HelloWorldPlayer>();
-                //player.Move();
-            }
-            yield return null;
-        }
-    }
     
     private void OnClientConnected(ulong clientId)
     {
@@ -75,3 +56,4 @@ public class GameManager : NetworkBehaviour
         Debug.Log($"CarMultiplayerController set to remote controlled for client {clientId}");
     }
 }
+#endif

@@ -17,6 +17,8 @@ namespace Car
         public NetworkVariable<Quaternion> netRotation = new NetworkVariable<Quaternion>(writePerm: NetworkVariableWritePermission.Owner, readPerm: NetworkVariableReadPermission.Everyone);
         public NetworkVariable<Vector3> netVelocity = new NetworkVariable<Vector3>(writePerm: NetworkVariableWritePermission.Owner, readPerm: NetworkVariableReadPermission.Everyone);
         public NetworkVariable<Vector3> netAngularVelocity = new NetworkVariable<Vector3>(writePerm: NetworkVariableWritePermission.Owner, readPerm: NetworkVariableReadPermission.Everyone);
+        public NetworkVariable<Vector4> netWheelYposition = new NetworkVariable<Vector4>(writePerm: NetworkVariableWritePermission.Owner, readPerm: NetworkVariableReadPermission.Everyone);
+        public NetworkVariable<float> netWheelSteeringAngle = new NetworkVariable<float>(writePerm: NetworkVariableWritePermission.Owner, readPerm: NetworkVariableReadPermission.Everyone);
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
@@ -61,16 +63,20 @@ namespace Car
             netRotation.Value = transform.rotation;
             netVelocity.Value = rb.linearVelocity;
             netAngularVelocity.Value = rb.angularVelocity;
+            netWheelYposition.Value = carController.GetWheelYPositions();
+            netWheelSteeringAngle.Value = carController.GetWheelSteeringAngle();
         }
 
         private void InterpolateMovement()
         {
             var targetPosition = netPosition.Value + (netVelocity.Value * Time.deltaTime);
-            
+            // Get the car's speed towards the front direction and set it in the CarController for wheel rotation calculations
+            carController.setCarSpeed(Vector3.Dot(netVelocity.Value, transform.forward));
             // Interpolate position and rotation for smooth movement
             transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * interpolationSpeed);
             transform.rotation = Quaternion.Lerp(transform.rotation, netRotation.Value, Time.deltaTime * interpolationSpeed);
-
+            carController.SetWheelYPositions(netWheelYposition.Value);
+            carController.SetWheelSteeringAngle(netWheelSteeringAngle.Value);
         }
     }
 }
