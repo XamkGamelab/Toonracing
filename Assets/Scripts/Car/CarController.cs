@@ -513,6 +513,26 @@ namespace Car
         {
             carSpeed = speed;
         }
+        
+        public Vector3 GetVelocity()
+        {
+            return rb.linearVelocity;
+        }
+        
+        public void SetVelocity(Vector3 velocity)
+        {
+            rb.linearVelocity = velocity;
+        }
+
+        public Vector3 GetAngularVelocity()
+        {
+            return rb.angularVelocity;
+        }
+
+        public void SetAngularVelocity(Vector3 angularVelocity)
+        {
+            rb.angularVelocity = angularVelocity;
+        }
         #endregion
 
         // Input system callbacks

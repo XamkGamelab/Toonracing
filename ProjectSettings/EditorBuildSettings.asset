@@ -5,12 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Dev/CarTest Multiplayer.unity
-    guid: 41dfdc9e026cd8d4cb033c5818ce86e9
   - enabled: 1
-    path: Assets/Scenes/Dev/MultiplayerTutorial.unity
-    guid: bb8435ac74d52a64b9c8764ecf02a194
+    path: Assets/Scenes/PhotonLoading.unity
+    guid: 58a0005eb4916e6419e5dbead49bfc56
+  - enabled: 1
+    path: Assets/Scenes/PhotonLobby.unity
+    guid: a092586efee2d3840a9cc67541749c42
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 79f8d4b28cc9ead498eb944f786f4a17
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a4dca90929a1cc64880b805de2391e31, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
