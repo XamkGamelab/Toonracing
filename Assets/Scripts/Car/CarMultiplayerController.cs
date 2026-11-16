@@ -55,6 +55,11 @@ namespace Car
                 InterpolateMovement();
             }
         }
+        
+        public bool isLocalPlayer()
+        {
+            return IsOwner;
+        }
 
         // Network synchronization
         private void SyncNetworkState()

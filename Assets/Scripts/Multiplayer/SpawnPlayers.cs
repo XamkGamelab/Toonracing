@@ -7,8 +7,10 @@ public class SpawnPlayers : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        var spawnPosition = spawnPoints[PhotonNetwork.LocalPlayer.ActorNumber % spawnPoints.Length].position;
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition, Quaternion.identity);
+        var spawnPoint = spawnPoints[PhotonNetwork.LocalPlayer.ActorNumber-1 % spawnPoints.Length];
+        var spawnPosition = spawnPoint.position;
+        var spawnRotation = spawnPoint.rotation.eulerAngles;
+        PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition, Quaternion.Euler(0f, spawnRotation.y, 0f));
     }
 
     // Update is called once per frame
