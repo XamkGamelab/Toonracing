@@ -48,6 +48,7 @@ public class GameManager : NetworkBehaviour
         var playerRotation = startPositions[playerCount].rotation;
         var playerPosition = startPositions[playerCount].position + Vector3.up * spawnHeightOffset;
         var spawnedCar = Instantiate(carPrefab, playerPosition, playerRotation);
+        spawnedCar.tag = "RemotePlayer";
         if(carSettings)
             spawnedCar.GetComponent<CarController>().SetCarSettings(carSettings);
         spawnedCar.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);

@@ -8,14 +8,12 @@ public class SpawnPlayers : MonoBehaviour
     void Start()
     {
         var spawnPoint = spawnPoints[PhotonNetwork.LocalPlayer.ActorNumber-1 % spawnPoints.Length];
+        //var spawnPoint = spawnPoints[spawnPoints.Length - 1];
         var spawnPosition = spawnPoint.position;
         var spawnRotation = spawnPoint.rotation.eulerAngles;
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition, Quaternion.Euler(0f, spawnRotation.y, 0f));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        var spawnedPlayer = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition, Quaternion.Euler(0f, spawnRotation.y, 0f));
+        var cameraController = FindAnyObjectByType<CameraController>();
+        if(cameraController)
+            cameraController.SetLocalPlayer(spawnedPlayer.transform);
     }
 }

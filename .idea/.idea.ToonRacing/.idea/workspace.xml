@@ -14,16 +14,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7a6e435-c7f1-4e3c-8a6f-9d1ac7090834" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/RallyCar_v02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/RallyCar_v02.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/RallyCar_v02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/RallyCar_v02.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PhotonLobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PhotonLobby.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarMultiplayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarMultiplayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Multiplayer/CreateAndJoinRooms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Multiplayer/CreateAndJoinRooms.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game logic/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game logic/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Multiplayer/SpawnPlayers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Multiplayer/SpawnPlayers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/HierarchyWindow.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/HierarchyWindow.settings" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,61 +64,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000000000003189" />
-      <entry key="MS500" value="1.0050203372557398" />
-      <entry key="S2" value="1.2662061604459938" />
-      <entry key="S5" value="1.6024945681620144" />
-      <entry key="S10" value="1.8838372972574051" />
-      <entry key="S30" value="2.4044334061404884" />
-      <entry key="S60" value="2.688220295689632" />
-      <entry key="M2" value="3.177593408810545" />
-      <entry key="M5" value="5.643694272809416" />
-      <entry key="M10" value="13.237690728108504" />
-      <entry key="M15" value="22.533003910890198" />
-      <entry key="M30" value="51.091207612829" />
-      <entry key="H1" value="117.05182310009707" />
-      <entry key="H2" value="246.45591406732967" />
-      <entry key="H4" value="432.46776545113767" />
-      <entry key="D1" value="1164.4484207805028" />
-      <entry key="W1" value="1732.647215811258" />
+      <entry key="MS100" value="2.2354981660710868E-148" />
+      <entry key="MS500" value="1.2276517798813231E-29" />
+      <entry key="S2" value="3.523815210949449E-7" />
+      <entry key="S5" value="0.013684190120611235" />
+      <entry key="S10" value="0.5018818336401598" />
+      <entry key="S30" value="5.781232873856616" />
+      <entry key="S60" value="10.73824251496666" />
+      <entry key="M2" value="15.092661098501244" />
+      <entry key="M5" value="24.120817638651108" />
+      <entry key="M10" value="36.09279619505808" />
+      <entry key="M15" value="44.52567731077182" />
+      <entry key="M30" value="62.31315589057075" />
+      <entry key="H1" value="95.16825900905174" />
+      <entry key="H2" value="183.94046023334639" />
+      <entry key="H4" value="364.99275375038496" />
+      <entry key="D1" value="1187.0681286899453" />
+      <entry key="W1" value="1832.91884941554" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="7.360332503048322E-31" />
-      <entry key="MS500" value="9.428940392016125E-7" />
-      <entry key="S2" value="0.041957720052999144" />
-      <entry key="S5" value="0.520449587517921" />
-      <entry key="S10" value="1.4184059061065495" />
-      <entry key="S30" value="3.163199394718764" />
-      <entry key="S60" value="4.176964914913221" />
-      <entry key="M2" value="5.71899597115773" />
-      <entry key="M5" value="9.507664508958607" />
-      <entry key="M10" value="14.45423715979344" />
-      <entry key="M15" value="18.573820685853082" />
-      <entry key="M30" value="29.022072325308223" />
-      <entry key="H1" value="51.891775048881215" />
-      <entry key="H2" value="97.22471906321178" />
-      <entry key="H4" value="164.67359772005358" />
-      <entry key="D1" value="447.78424313945754" />
-      <entry key="W1" value="661.8610237787185" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000138052" />
+      <entry key="S2" value="1.0019665218415992" />
+      <entry key="S5" value="1.0992627628162872" />
+      <entry key="S10" value="1.4176701487766943" />
+      <entry key="S30" value="2.167374874499746" />
+      <entry key="S60" value="2.5263309311517714" />
+      <entry key="M2" value="2.8410915531614642" />
+      <entry key="M5" value="4.2344524845917135" />
+      <entry key="M10" value="6.738991299144558" />
+      <entry key="M15" value="8.858509143605659" />
+      <entry key="M30" value="14.51998008090823" />
+      <entry key="H1" value="27.059653518228945" />
+      <entry key="H2" value="60.6185821844191" />
+      <entry key="H4" value="128.00354026948605" />
+      <entry key="D1" value="444.6670840904334" />
+      <entry key="W1" value="688.5744441006449" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.683906832642893E-4" />
-      <entry key="MS500" value="0.21583740812822066" />
-      <entry key="S2" value="0.7497876231794042" />
-      <entry key="S5" value="1.600044301772818" />
-      <entry key="S10" value="2.8927064318687927" />
-      <entry key="S30" value="5.362336793969288" />
-      <entry key="S60" value="6.745044402361861" />
-      <entry key="M2" value="8.82081411941974" />
-      <entry key="M5" value="15.09742523793907" />
-      <entry key="M10" value="27.645284962494912" />
-      <entry key="M15" value="41.064302705554944" />
-      <entry key="M30" value="80.07765043877741" />
-      <entry key="H1" value="168.90530230153828" />
-      <entry key="H2" value="343.6351095306407" />
-      <entry key="H4" value="597.0994048887112" />
-      <entry key="D1" value="1612.216462857841" />
-      <entry key="W1" value="2394.50511947848" />
+      <entry key="MS100" value="6.772274609789093E-5" />
+      <entry key="MS500" value="0.14660436865440735" />
+      <entry key="S2" value="0.6195884668813498" />
+      <entry key="S5" value="0.9010984556069324" />
+      <entry key="S10" value="1.7141286848475863" />
+      <entry key="S30" value="7.762406066043376" />
+      <entry key="S60" value="13.134960120854807" />
+      <entry key="M2" value="17.85543590978946" />
+      <entry key="M5" value="28.313638532397015" />
+      <entry key="M10" value="42.80143145426127" />
+      <entry key="M15" value="53.35826105653074" />
+      <entry key="M30" value="76.81311142515402" />
+      <entry key="H1" value="122.20971162968091" />
+      <entry key="H2" value="244.53472998847315" />
+      <entry key="H4" value="492.9667390254156" />
+      <entry key="D1" value="1631.7195021578266" />
+      <entry key="W1" value="2521.490087154519" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -286,7 +284,7 @@
       <workItem from="1793711623429" duration="14445000" />
       <workItem from="1793777221757" duration="1873000" />
       <workItem from="1794812471693" duration="2994000" />
-      <workItem from="1794828537199" duration="9293000" />
+      <workItem from="1794828537199" duration="18235000" />
     </task>
     <servers />
   </component>
@@ -344,6 +342,32 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Game logic/CameraController.cs</url>
+          <line>61</line>
+          <properties documentPath="C:\Users\tuorp\Desktop\Unity\Toonracing\Assets\Scripts\Game logic\CameraController.cs" containingFunctionPresentation="Method 'SetLocalPlayer'">
+            <startOffsets>
+              <option value="1993" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2016" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Game logic/CameraController.cs</url>
+          <line>44</line>
+          <properties documentPath="C:\Users\tuorp\Desktop\Unity\Toonracing\Assets\Scripts\Game logic\CameraController.cs" containingFunctionPresentation="Method 'Update'">
+            <startOffsets>
+              <option value="1411" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1427" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

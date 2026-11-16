@@ -910,6 +910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RallyCar_v02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 71930cfbc19c32f4489845e843e1b7fe, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3697781223411200541, guid: 71930cfbc19c32f4489845e843e1b7fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1203,7 +1207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1144580104
+  GlobalObjectIdHash: 580282699
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -1257,6 +1261,11 @@ MonoBehaviour:
       MinSecondsBetweenUpdates: 0
       MaxSecondsBetweenUpdates: 0
     m_InternalValue: {x: 0, y: 0, z: 0, w: 0}
+  netWheelSteeringAngle:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
 --- !u!54 &9093807311997719547
 Rigidbody:
   m_ObjectHideFlags: 0

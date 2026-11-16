@@ -910,6 +910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RallyCar_v02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 71930cfbc19c32f4489845e843e1b7fe, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3697781223411200541, guid: 71930cfbc19c32f4489845e843e1b7fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
