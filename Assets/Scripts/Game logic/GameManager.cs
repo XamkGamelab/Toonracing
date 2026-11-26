@@ -1,3 +1,4 @@
+#if USE_NETCODE
 using System.Collections;
 using System.Linq;
 using Car;
@@ -57,4 +58,5 @@ public class GameManager : NetworkBehaviour
         Debug.Log($"CarMultiplayerController set to remote controlled for client {clientId}");
     }
 }
+#endif
 #endif

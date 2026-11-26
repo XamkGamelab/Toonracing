@@ -6,6 +6,7 @@ namespace Items
         ItemCollected,
         StartRace,
         PlayerJoinedRoom,
+        PlayerHitCheckpoint
     }
 
     public class ItemEvent

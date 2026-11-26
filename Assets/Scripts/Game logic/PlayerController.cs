@@ -1,3 +1,4 @@
+#if USE_NETCODE
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -58,3 +59,4 @@ namespace Game_logic
         }
     }
 }
+#endif

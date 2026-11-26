@@ -2,14 +2,12 @@ using System;
 using System.Collections;
 using System.Linq;
 using Scriptables;
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Car
 {
     [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(BoxCollider))]
     public class CarController : MonoBehaviour, Interfaces.IPicker
     {
@@ -81,7 +79,6 @@ namespace Car
         
         //General variables
         private Rigidbody rb;
-        private PlayerInput playerInput;
         [SerializeField] private GearSelect gearSelect;
         [SerializeField] private bool handbrake;
         private float prevSteerReqAngle;
@@ -95,7 +92,6 @@ namespace Car
         private float jumpEndTimeout;
         private bool isRemoteControlled; // If the car is controlled by a remote player, disable input handling and physics updates
         [SerializeField]private Quaternion startRotation;
-        private NetworkObject networkObject;
         private float frontWheelRadius;
         private float flWheelRadius;
         private float rearWheelRadius;
@@ -113,9 +109,6 @@ namespace Car
             rb.isKinematic = false; // Ensure the car is not kinematic at the start
             if(carTransform == null)
                 Debug.LogError("Car transform not assigned. Should be the Game object that holds the car model.");
-            playerInput = GetComponent<PlayerInput>();
-            if(playerInput == null)
-                Debug.LogError("PlayerInput not found on the car object.");
             if(!frCollider || !flCollider || !rrCollider || !rlCollider)
                 Debug.LogError("One or more wheel colliders are not assigned.");
             // Get the wheel radius from the wheel colliders to use for calculating wheel rotation if remote controlled
@@ -466,15 +459,6 @@ namespace Car
         public void SetRemoteControlled(bool isRemote)
         {
             isRemoteControlled = isRemote;
-            if (playerInput != null)
-            {
-                playerInput.enabled = !isRemote;
-                if (isRemote)
-                    playerInput.DeactivateInput();
-                else
-                    playerInput.ActivateInput();
-            }
-
             if (rb != null)
                 rb.isKinematic = isRemote;
         }

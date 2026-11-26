@@ -6,8 +6,10 @@ using UnityEngine;
 public class UserData
 {
     public string userName;
-    public string playerID;
+    public int playerID;
     public Color playerColor;
+    public int previousCheckpointIndex;
+    public int lapsElapsed;
     // Add other user data fields as needed
 }
 
@@ -65,18 +67,34 @@ public class DataManager : MonoBehaviour
         userData = new UserData { playerColor = color };
         return userData.playerColor;
     }
-    public void AddPlayerData(string playerId, string playerName, Color playerColor)
+    public void AddPlayerData(int playerId, string playerName, Color playerColor)
     {
         var user = new UserData
         {
             playerID = playerId,
             userName = playerName,
-            playerColor = playerColor
+            playerColor = playerColor,
+            previousCheckpointIndex = -1,
+            lapsElapsed = 0
         };
         otherPlayers.Add(user);
     }
-
-    public void RemovePlayerData(string playerId)
+    
+    public void UpdatePlayerData(int playerId, int checkpointIndex, int laps)
+    {
+        var player = otherPlayers.Find(p => p.playerID == playerId);
+        if(player == null)
+            return;
+        player.previousCheckpointIndex = checkpointIndex;
+        player.lapsElapsed = laps;
+    }
+    
+    public UserData GetPlayerData(int playerId)
+    {
+        return otherPlayers.Find(p => p.playerID == playerId);
+    }
+    
+    public void RemovePlayerData(int playerId)
     {
         otherPlayers.RemoveAll(player => player.playerID == playerId);
     }

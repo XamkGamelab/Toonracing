@@ -120,6 +120,7 @@ namespace Multiplayer
             if (!PhotonNetwork.IsMasterClient) 
                 return;
             Debug.Log("Starting the game...");
+            PhotonNetwork.CurrentRoom.IsOpen = false; // Close the room to prevent new players from joining
             PhotonNetwork.LoadLevel("Game");
         }
         

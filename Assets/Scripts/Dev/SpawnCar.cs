@@ -1,3 +1,5 @@
+#if false
+
 using Car;
 using Scriptables;
 using UnityEngine;
@@ -68,3 +70,4 @@ public class SpawnCar : MonoBehaviour
     }
     
 }
+#endif

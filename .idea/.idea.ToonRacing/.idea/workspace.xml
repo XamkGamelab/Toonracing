@@ -15,13 +15,48 @@
   <component name="ChangeListManager">
     <list default="true" id="b7a6e435-c7f1-4e3c-8a6f-9d1ac7090834" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToonRacing/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/RallyCar_v02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/RallyCar_v02.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem_Actions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/RallyCar_v01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/RallyCar_v01.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PickableItem.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PickableItem.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/StartingPosition.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/StartingPosition.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/RallyCar_v02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/RallyCar_v02.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarMultiplayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarMultiplayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/HelloWorldPlayer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/HelloWorldPlayer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/HelloworldManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/HelloworldManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/MultiplayerDebug.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/MultiplayerDebug.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/NetworkCommandLine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/NetworkCommandLine.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/NetworkTransformTest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/NetworkTransformTest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/RPCTest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/RPCTest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dev/SpawnCar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dev/SpawnCar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game logic/DataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game logic/DataManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game logic/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game logic/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game logic/NetworkCarSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game logic/NetworkCarSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game logic/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game logic/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/ItemEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ItemEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Multiplayer/CreateAndJoinRooms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Multiplayer/CreateAndJoinRooms.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Multiplayer/RaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Multiplayer/RaceManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Multiplayer/SpawnPlayers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Multiplayer/SpawnPlayers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/MultiplayerManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/MultiplayerManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/HierarchyWindow.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/HierarchyWindow.settings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-6000.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,18 +79,16 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d5ea965f39d74501b56f4006ef80da3421b600/28/d99b9db3/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d5ea965f39d74501b56f4006ef80da3421b600/74/45e57889/Component.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d5ea965f39d74501b56f4006ef80da3421b600/ab/404fb470/UnityEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/CarBaseSettings.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/Cars/TestCar Multiplayer.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/PhotonLobby.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Dev/HelloWorldPlayer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Dev/HelloworldManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Dev/NetworkCommandLine.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Dev/NetworkTransformTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Dev/MultiplayerConnectionStats.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game logic/DataManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game logic/NetworkCarSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/ItemEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Multiplayer/SpawnPlayers.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@cfd429cc91ec/Runtime/Configuration/NetworkPrefab.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scriptables/CarRaceSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.settings-manager@0b8638c5ce86/Editor/SettingsDictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Immediate Window" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -64,61 +97,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.2354981660710868E-148" />
-      <entry key="MS500" value="1.2276517798813231E-29" />
-      <entry key="S2" value="3.523815210949449E-7" />
-      <entry key="S5" value="0.013684190120611235" />
-      <entry key="S10" value="0.5018818336401598" />
-      <entry key="S30" value="5.781232873856616" />
-      <entry key="S60" value="10.73824251496666" />
-      <entry key="M2" value="15.092661098501244" />
-      <entry key="M5" value="24.120817638651108" />
-      <entry key="M10" value="36.09279619505808" />
-      <entry key="M15" value="44.52567731077182" />
-      <entry key="M30" value="62.31315589057075" />
-      <entry key="H1" value="95.16825900905174" />
-      <entry key="H2" value="183.94046023334639" />
-      <entry key="H4" value="364.99275375038496" />
-      <entry key="D1" value="1187.0681286899453" />
-      <entry key="W1" value="1832.91884941554" />
+      <entry key="MS100" value="1.2502932159562177" />
+      <entry key="MS500" value="2.566964162268258" />
+      <entry key="S2" value="4.599141523915721" />
+      <entry key="S5" value="5.959236072791179" />
+      <entry key="S10" value="7.623335265877218" />
+      <entry key="S30" value="10.418063902570552" />
+      <entry key="S60" value="11.686069871312018" />
+      <entry key="M2" value="12.690593153724453" />
+      <entry key="M5" value="16.290948489794047" />
+      <entry key="M10" value="26.747137025135974" />
+      <entry key="M15" value="39.1773722038872" />
+      <entry key="M30" value="78.40626315575679" />
+      <entry key="H1" value="157.2873374136156" />
+      <entry key="H2" value="297.4215676203628" />
+      <entry key="H4" value="528.408082209145" />
+      <entry key="D1" value="1592.9851226450382" />
+      <entry key="W1" value="2444.716917300144" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000000138052" />
-      <entry key="S2" value="1.0019665218415992" />
-      <entry key="S5" value="1.0992627628162872" />
-      <entry key="S10" value="1.4176701487766943" />
-      <entry key="S30" value="2.167374874499746" />
-      <entry key="S60" value="2.5263309311517714" />
-      <entry key="M2" value="2.8410915531614642" />
-      <entry key="M5" value="4.2344524845917135" />
-      <entry key="M10" value="6.738991299144558" />
-      <entry key="M15" value="8.858509143605659" />
-      <entry key="M30" value="14.51998008090823" />
-      <entry key="H1" value="27.059653518228945" />
-      <entry key="H2" value="60.6185821844191" />
-      <entry key="H4" value="128.00354026948605" />
-      <entry key="D1" value="444.6670840904334" />
-      <entry key="W1" value="688.5744441006449" />
+      <entry key="MS100" value="3.125282615537142E-28" />
+      <entry key="MS500" value="3.154843782208721E-6" />
+      <entry key="S2" value="0.04216654455561071" />
+      <entry key="S5" value="0.29540452544727924" />
+      <entry key="S10" value="0.647580515856258" />
+      <entry key="S30" value="1.2984544427627094" />
+      <entry key="S60" value="1.6032480919521754" />
+      <entry key="M2" value="1.9084720773837653" />
+      <entry key="M5" value="3.739329753653697" />
+      <entry key="M10" value="8.656919218340734" />
+      <entry key="M15" value="13.582975551820523" />
+      <entry key="M30" value="28.331729184466155" />
+      <entry key="H1" value="60.09940427087099" />
+      <entry key="H2" value="115.12289210953277" />
+      <entry key="H4" value="200.72473445602606" />
+      <entry key="D1" value="599.9728207215459" />
+      <entry key="W1" value="919.9172773804295" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.772274609789093E-5" />
-      <entry key="MS500" value="0.14660436865440735" />
-      <entry key="S2" value="0.6195884668813498" />
-      <entry key="S5" value="0.9010984556069324" />
-      <entry key="S10" value="1.7141286848475863" />
-      <entry key="S30" value="7.762406066043376" />
-      <entry key="S60" value="13.134960120854807" />
-      <entry key="M2" value="17.85543590978946" />
-      <entry key="M5" value="28.313638532397015" />
-      <entry key="M10" value="42.80143145426127" />
-      <entry key="M15" value="53.35826105653074" />
-      <entry key="M30" value="76.81311142515402" />
-      <entry key="H1" value="122.20971162968091" />
-      <entry key="H2" value="244.53472998847315" />
-      <entry key="H4" value="492.9667390254156" />
-      <entry key="D1" value="1631.7195021578266" />
-      <entry key="W1" value="2521.490087154519" />
+      <entry key="MS100" value="1.1664904724731118" />
+      <entry key="MS500" value="2.529802618922553" />
+      <entry key="S2" value="4.615338826641398" />
+      <entry key="S5" value="6.216720576647591" />
+      <entry key="S10" value="8.231020670922904" />
+      <entry key="S30" value="11.689741533017683" />
+      <entry key="S60" value="13.271146308320077" />
+      <entry key="M2" value="14.586536614738552" />
+      <entry key="M5" value="20.017284800465006" />
+      <entry key="M10" value="35.38512627147013" />
+      <entry key="M15" value="52.73894774809884" />
+      <entry key="M30" value="106.71332616616709" />
+      <entry key="H1" value="217.3578501758876" />
+      <entry key="H2" value="412.5135578478073" />
+      <entry key="H4" value="729.1013146477042" />
+      <entry key="D1" value="2192.9392876536413" />
+      <entry key="W1" value="3364.6301932354036" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -145,12 +178,13 @@
     </option>
     <option name="panelTemplate">
       <template>
-        <option name="ensembleEnabled" value="false" />
+        <option name="ensembleEnabled" value="true" />
+        <option name="ensembleTierId" value="balance" />
         <option name="modeId" value="Ask" />
         <option name="model">
           <model>
             <option name="modelType" value="builtin_id" />
-            <option name="modelValue" value="auto" />
+            <option name="modelValue" value="ensemble" />
           </model>
         </option>
         <option name="targetType" value="BACKGROUND" />
@@ -194,7 +228,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../TooracingTest\Toonracing.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../ToonRacingLobby\Toonracing.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\tuorp\Desktop\TooracingTest" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -234,11 +268,11 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="39864">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="coreClr" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="39864" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -284,7 +318,13 @@
       <workItem from="1793711623429" duration="14445000" />
       <workItem from="1793777221757" duration="1873000" />
       <workItem from="1794812471693" duration="2994000" />
-      <workItem from="1794828537199" duration="18235000" />
+      <workItem from="1794828537199" duration="18768000" />
+      <workItem from="1795501546456" duration="2886000" />
+      <workItem from="1795508712578" duration="1656000" />
+      <workItem from="1795529072550" duration="13479000" />
+      <workItem from="1795545743586" duration="1843000" />
+      <workItem from="1795607302316" duration="4894000" />
+      <workItem from="1795685028842" duration="2128000" />
     </task>
     <servers />
   </component>
@@ -344,30 +384,17 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Game logic/CameraController.cs</url>
-          <line>61</line>
-          <properties documentPath="C:\Users\tuorp\Desktop\Unity\Toonracing\Assets\Scripts\Game logic\CameraController.cs" containingFunctionPresentation="Method 'SetLocalPlayer'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Multiplayer/SpawnPlayers.cs</url>
+          <line>22</line>
+          <properties documentPath="C:\Users\tuorp\Desktop\Unity\Toonracing\Assets\Scripts\Multiplayer\SpawnPlayers.cs" containingFunctionPresentation="Method 'Start'">
             <startOffsets>
-              <option value="1993" />
+              <option value="1171" />
             </startOffsets>
             <endOffsets>
-              <option value="2016" />
+              <option value="1226" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Game logic/CameraController.cs</url>
-          <line>44</line>
-          <properties documentPath="C:\Users\tuorp\Desktop\Unity\Toonracing\Assets\Scripts\Game logic\CameraController.cs" containingFunctionPresentation="Method 'Update'">
-            <startOffsets>
-              <option value="1411" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1427" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
